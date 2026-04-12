@@ -1,0 +1,68 @@
+{
+  "greeting": "Hello",
+  "name": "I'm Mostafa Qurany",
+  "role": "Senior Flutter Developer",
+  "summary": "Senior Flutter Developer with 4+ years of experience building scalable, production-grade mobile applications for Android and iOS. Specialized in Clean Architecture, modular systems, BLoC & Riverpod state management, offline-first solutions, POS integrations, and multi-role enterprise platforms.",
+  "primaryCtaLabel": "Got a project?",
+  "secondaryCtaLabel": "My resume",
+  "stats": [
+    {
+      "value": "4+",
+      "label": "Years of experience"
+    },
+    {
+      "value": "10+",
+      "label": "Completed projects"
+    },
+    {
+      "value": "4",
+      "label": "Companies worked with"
+    }
+  ],
+  "techStack": [
+    "Flutter",
+    "Dart",
+    "Java",
+    "Kotlin",
+    "Swift",
+    "Python",
+    "C++",
+    "Node.js",
+    "SQL",
+    "Git",
+    "GitHub",
+    "GitLab",
+    "Firebase",
+    "Hive",
+    "SQLite",
+    "Supabase",
+    "BLoC",
+    "Riverpod",
+    "Cubit",
+    "Provider",
+    "GetX",
+    "RESTful APIs",
+    "Freezed",
+    "json_serializable",
+    "Retrofit"
+  ],
+  "services": [
+    {
+      "title": "Flutter App Development",
+      "description": "Build high-quality mobile applications with Flutter for Android and iOS with strong performance and maintainable architecture.",
+      "icon": "language"
+    },
+    {
+      "title": "State Management & Architecture",
+      "description": "Expert in BLoC, Riverpod, Clean Architecture, MVVM, and SOLID principles to keep enterprise apps scalable.",
+      "icon": "phone_android"
+    },
+    {
+      "title": "Complex Integrations",
+      "description": "Implement offline-first architectures, POS/Bluetooth printing, QR/NFC, real-time sync, and payment gateways.",
+      "icon": "cloud_done"
+    }
+  ],
+  "aboutTitle": "About me",
+  "aboutSummary": "I am a Senior Flutter Developer from Beni Suef, Egypt, with a B.Sc. in Computer Science. I have a proven track record of leading full development lifecycles from requirements analysis to deployment. I specialize in building scalable POS systems, offline-first architectures, and enterprise solutions. I'm a quick learner who thrives on optimizing performance, delivering pixel-perfect UIs, and collaborating in agile teams."
+}
