@@ -1,0 +1,8 @@
+{
+    "project": "flutter_portfolio",
+    "default_agent": "flutter_architect",
+    "preferred_commands": [
+        "analyze",
+        "run-web"
+    ]
+}
