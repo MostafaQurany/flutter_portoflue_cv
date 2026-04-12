@@ -1,61 +1,82 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/responsive/responsive_builder.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../../core/widgets/animated_reveal.dart';
+import '../../domain/contact_content.dart';
+import '../providers/content_providers.dart';
 
-class ContactSection extends StatelessWidget {
+class ContactSection extends ConsumerWidget {
   const ContactSection({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return ResponsiveBuilder(
-      mobileBuilder: (context) => const _ContactLayout(isDesktop: false),
-      tabletBuilder: (context) => const _ContactLayout(isDesktop: false),
-      desktopBuilder: (context) => const _ContactLayout(isDesktop: true),
+  Widget build(BuildContext context, WidgetRef ref) {
+    final contactContent = ref.watch(contactContentProvider);
+
+    return contactContent.when(
+      data: (content) => ResponsiveBuilder(
+        mobileBuilder: (context) => AnimatedReveal(
+          delay: const Duration(milliseconds: 180),
+          child: _ContactLayout(isDesktop: false, content: content),
+        ),
+        tabletBuilder: (context) => AnimatedReveal(
+          delay: const Duration(milliseconds: 180),
+          child: _ContactLayout(isDesktop: false, content: content),
+        ),
+        desktopBuilder: (context) => AnimatedReveal(
+          delay: const Duration(milliseconds: 180),
+          child: _ContactLayout(isDesktop: true, content: content),
+        ),
+      ),
+      loading: () => const Center(child: CircularProgressIndicator()),
+      error: (error, stackTrace) => const SizedBox.shrink(),
     );
   }
 }
 
 class _ContactLayout extends StatelessWidget {
-  const _ContactLayout({required this.isDesktop});
+  const _ContactLayout({required this.isDesktop, required this.content});
 
   final bool isDesktop;
+  final ContactContent content;
 
   @override
   Widget build(BuildContext context) {
     final intro = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Let\'s build something solid', style: Theme.of(context).textTheme.headlineMedium),
+        Text(content.title, style: Theme.of(context).textTheme.headlineMedium),
         const SizedBox(height: 16),
         Text(
-          'Available for product design reviews, Flutter delivery work, interface refreshes, and architecture cleanup for growing codebases.',
+          content.summary,
           style: Theme.of(context).textTheme.bodyLarge,
         ),
         const SizedBox(height: 24),
         Wrap(
           spacing: 12,
           runSpacing: 12,
-          children: const [
-            _ContactChip(icon: Icons.email_outlined, label: 'jensen.dev@mail.com'),
-            _ContactChip(icon: Icons.call_outlined, label: '+20 100 000 0000'),
-            _ContactChip(icon: Icons.location_on_outlined, label: 'Remote / Cairo'),
-          ],
+          children: content.items
+              .map(
+                (item) => _ContactChip(
+                  icon: _contactIcon(item.type),
+                  label: item.label,
+                ),
+              )
+              .toList(growable: false),
         ),
       ],
     );
 
     final cards = Column(
-      children: const [
-        _InfoCard(
-          title: 'Delivery approach',
-          description: 'Feature-first Flutter structure, explicit states, small reusable widgets, and release-safe iteration.',
-        ),
-        SizedBox(height: 16),
-        _InfoCard(
-          title: 'Typical engagement',
-          description: 'Portfolio sites, admin dashboards, mobile/web apps, and UI modernization with maintainable architecture.',
-        ),
+      children: [
+        for (var index = 0; index < content.infoCards.length; index++) ...[
+          if (index > 0) const SizedBox(height: 16),
+          _InfoCard(
+            title: content.infoCards[index].title,
+            description: content.infoCards[index].description,
+          ),
+        ],
       ],
     );
 
@@ -75,6 +96,15 @@ class _ContactLayout extends StatelessWidget {
       ],
     );
   }
+}
+
+IconData _contactIcon(String type) {
+  return switch (type) {
+    'email' => Icons.email_outlined,
+    'phone' => Icons.call_outlined,
+    'location' => Icons.location_on_outlined,
+    _ => Icons.info_outline,
+  };
 }
 
 class _ContactChip extends StatelessWidget {

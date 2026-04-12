@@ -1,0 +1,152 @@
+[
+  {
+    "title": "Cater Station",
+    "subtitle": "SaaS Platform",
+    "description": "Multi-role event & catering system with booking, payouts, and role dashboards.",
+    "technologies": [
+      "Flutter",
+      "Clean Architecture",
+      "Role-Based Systems"
+    ],
+    "screenshots": [
+      "https://picsum.photos/seed/0_0/800/600",
+      "https://picsum.photos/seed/0_1/800/600",
+      "https://picsum.photos/seed/0_2/800/600"
+    ]
+  },
+  {
+    "title": "Parking Management System",
+    "subtitle": "Smart Parking Solution",
+    "description": "Smart parking solution with POS/Sunmi printer integration for invoice generation and QR-based vehicle tracking.",
+    "technologies": [
+      "Flutter",
+      "BLoC",
+      "Bluetooth Printing",
+      "QR Code",
+      "Local DB"
+    ],
+    "screenshots": [
+      "https://picsum.photos/seed/1_0/800/600",
+      "https://picsum.photos/seed/1_1/800/600",
+      "https://picsum.photos/seed/1_2/800/600"
+    ]
+  },
+  {
+    "title": "Wafy Restaurant POS",
+    "subtitle": "Tablet-based POS",
+    "description": "Tablet-based restaurant management app with offline-first menu caching and table state management.",
+    "technologies": [
+      "Flutter",
+      "Riverpod",
+      "Hive",
+      "Invoice System"
+    ],
+    "screenshots": [
+      "https://picsum.photos/seed/2_0/800/600",
+      "https://picsum.photos/seed/2_1/800/600",
+      "https://picsum.photos/seed/2_2/800/600"
+    ]
+  },
+  {
+    "title": "Dr. DrugJo Medical Platform",
+    "subtitle": "Healthcare App",
+    "description": "Comprehensive medical platform serving doctors, nurses, pharmacies with drug databases, directory, quizzes, and job listings.",
+    "technologies": [
+      "Flutter",
+      "Firebase",
+      "Multi-Role Architecture"
+    ],
+    "screenshots": [
+      "https://picsum.photos/seed/3_0/800/600",
+      "https://picsum.photos/seed/3_1/800/600",
+      "https://picsum.photos/seed/3_2/800/600"
+    ]
+  },
+  {
+    "title": "Invotek Company Management",
+    "subtitle": "Enterprise Management",
+    "description": "Enterprise management system for products, customers, expenses, and tax invoices with granular user permissions.",
+    "technologies": [
+      "Flutter",
+      "BLoC",
+      "POS Printing",
+      "Permission System"
+    ],
+    "screenshots": [
+      "https://picsum.photos/seed/4_0/800/600",
+      "https://picsum.photos/seed/4_1/800/600",
+      "https://picsum.photos/seed/4_2/800/600"
+    ]
+  },
+  {
+    "title": "Halla App",
+    "subtitle": "Smart Networking",
+    "description": "A smart networking app for digital contact sharing using QR, NFC, and AI-generated job tags. Supports offline syncing and local/cloud storage.",
+    "technologies": [
+      "Flutter",
+      "Firebase",
+      "Hive",
+      "AI",
+      "NFC",
+      "BLoC",
+      "Clean Architecture"
+    ],
+    "screenshots": [
+      "https://picsum.photos/seed/5_0/800/600",
+      "https://picsum.photos/seed/5_1/800/600",
+      "https://picsum.photos/seed/5_2/800/600"
+    ]
+  },
+  {
+    "title": "Wasla App",
+    "subtitle": "Graduation Project",
+    "description": "A smart delivery collaboration app connecting users to buy products from other cities with travelers. Features secure in-app chat, Paymob integration, and NLP.",
+    "technologies": [
+      "Flutter",
+      "Firebase",
+      "Hive",
+      "Paymob API",
+      "NLP",
+      "BLoC"
+    ],
+    "screenshots": [
+      "https://picsum.photos/seed/6_0/800/600",
+      "https://picsum.photos/seed/6_1/800/600",
+      "https://picsum.photos/seed/6_2/800/600"
+    ]
+  },
+  {
+    "title": "Taagira App",
+    "subtitle": "Car Rental App",
+    "description": "A mobile car rental app built from scratch that allows users to rent or list vehicles with location-based search and secure authentication.",
+    "technologies": [
+      "Flutter",
+      "Firebase",
+      "Firestore",
+      "Hive",
+      "BLoC",
+      "Geolocation"
+    ],
+    "screenshots": [
+      "https://picsum.photos/seed/7_0/800/600",
+      "https://picsum.photos/seed/7_1/800/600",
+      "https://picsum.photos/seed/7_2/800/600"
+    ]
+  },
+  {
+    "title": "V-School App",
+    "subtitle": "Education Management",
+    "description": "A school management platform enabling teachers to manage lessons, attendance, and assignments with real-time sync.",
+    "technologies": [
+      "Flutter",
+      "MVVM",
+      "RESTful APIs",
+      "Firebase"
+    ],
+    "screenshots": [
+      "https://picsum.photos/seed/8_0/800/600",
+      "https://picsum.photos/seed/8_1/800/600",
+      "https://picsum.photos/seed/8_2/800/600"
+    ]
+  }
+]

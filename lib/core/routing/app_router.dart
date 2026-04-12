@@ -5,6 +5,7 @@ import '../../features/admin/presentation/pages/add_project_screen.dart';
 import '../../features/admin/presentation/pages/admin_login_screen.dart';
 import '../../features/admin/presentation/providers/admin_session_provider.dart';
 import '../../features/home/presentation/pages/home_page.dart';
+import '../../features/projects/presentation/pages/project_details_screen.dart';
 import 'route_paths.dart';
 
 final appRouterProvider = Provider<GoRouter>((ref) {
@@ -16,6 +17,13 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: RoutePaths.home,
         builder: (context, state) => const HomePage(),
+      ),
+      GoRoute(
+        path: RoutePaths.projectDetails,
+        builder: (context, state) {
+          final projectId = state.pathParameters['id']!;
+          return ProjectDetailsScreen(projectId: projectId);
+        },
       ),
       GoRoute(
         path: RoutePaths.adminLogin,

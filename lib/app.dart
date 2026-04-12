@@ -19,7 +19,7 @@ class PortfolioApp extends ConsumerWidget {
     final resolvedRouter = router ?? ref.watch(routerConfigProvider);
 
     return MaterialApp.router(
-      title: 'Jensen Portfolio',
+      title: 'Mostafa Portfolio',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.darkTheme,
       routerConfig: resolvedRouter,

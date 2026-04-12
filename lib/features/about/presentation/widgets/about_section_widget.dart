@@ -1,48 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/responsive/responsive_builder.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../../core/widgets/animated_reveal.dart';
+import '../../../home/domain/profile_content.dart';
+import '../../../home/presentation/providers/content_providers.dart';
 
-class AboutSectionWidget extends StatelessWidget {
+class AboutSectionWidget extends ConsumerWidget {
   const AboutSectionWidget({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return ResponsiveBuilder(
-      mobileBuilder: (context) => const _AboutLayout(isDesktop: false),
-      tabletBuilder: (context) => const _AboutLayout(isDesktop: false),
-      desktopBuilder: (context) => const _AboutLayout(isDesktop: true),
+  Widget build(BuildContext context, WidgetRef ref) {
+    final profileContent = ref.watch(profileContentProvider);
+
+    return profileContent.when(
+      data: (content) => ResponsiveBuilder(
+        mobileBuilder: (context) => AnimatedReveal(
+          child: _AboutLayout(isDesktop: false, content: content),
+        ),
+        tabletBuilder: (context) => AnimatedReveal(
+          child: _AboutLayout(isDesktop: false, content: content),
+        ),
+        desktopBuilder: (context) => AnimatedReveal(
+          child: _AboutLayout(isDesktop: true, content: content),
+        ),
+      ),
+      loading: () => const Center(child: CircularProgressIndicator()),
+      error: (error, stackTrace) => const SizedBox.shrink(),
     );
   }
 }
 
 class _AboutLayout extends StatelessWidget {
-  const _AboutLayout({required this.isDesktop});
+  const _AboutLayout({required this.isDesktop, required this.content});
 
   final bool isDesktop;
+  final ProfileContent content;
 
   @override
   Widget build(BuildContext context) {
     final services = Column(
-      children: const [
-        _ServiceTile(
-          icon: Icons.language_rounded,
-          title: 'Website Development',
-          description: 'Fast, maintainable websites with responsive structure and clear content hierarchy.',
-          isLast: false,
-        ),
-        _ServiceTile(
-          icon: Icons.phone_android_rounded,
-          title: 'App Development',
-          description: 'Flutter experiences that stay consistent across mobile, tablet, and web targets.',
-          isLast: false,
-        ),
-        _ServiceTile(
-          icon: Icons.cloud_done_rounded,
-          title: 'Website Hosting',
-          description: 'Deployment-ready builds, release discipline, and practical production preparation.',
-          isLast: true,
-        ),
+      children: [
+        for (var index = 0; index < content.services.length; index++)
+          _ServiceTile(
+            icon: _iconFor(content.services[index].icon),
+            title: content.services[index].title,
+            description: content.services[index].description,
+            isLast: index == content.services.length - 1,
+          ),
       ],
     );
 
@@ -50,16 +56,21 @@ class _AboutLayout extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'About me',
-          style: Theme.of(context).textTheme.headlineMedium,
+          content.aboutTitle,
+          style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+            fontWeight: FontWeight.bold,
+          ),
         ),
-        const SizedBox(height: 18),
+        const SizedBox(height: 24),
         Text(
-          'I focus on structured Flutter applications, layered architecture, and interfaces that communicate value without noise. My work balances product clarity with engineering discipline so teams can ship quickly without sacrificing maintainability.',
-          style: Theme.of(context).textTheme.bodyLarge,
+          content.aboutSummary,
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+            height: 1.8,
+            color: AppColors.textMuted,
+          ),
         ),
-        const SizedBox(height: 28),
-        const _StatsGrid(),
+        const SizedBox(height: 40),
+        _StatsGrid(stats: content.stats),
       ],
     );
 
@@ -100,37 +111,52 @@ class _ServiceTile extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // Timeline indicator with orange dot and vertical line
           Column(
             children: [
               Container(
-                width: 52,
-                height: 52,
-                decoration: BoxDecoration(
-                  color: AppColors.primarySoft,
-                  borderRadius: BorderRadius.circular(18),
+                margin: const EdgeInsets.only(top: 8),
+                width: 10,
+                height: 10,
+                decoration: const BoxDecoration(
+                  color: AppColors.primary,
+                  shape: BoxShape.circle,
                 ),
-                child: Icon(icon, color: AppColors.primary),
               ),
               if (!isLast)
                 Expanded(
                   child: Container(
                     width: 2,
                     margin: const EdgeInsets.symmetric(vertical: 8),
-                    color: AppColors.border,
+                    color: AppColors.primarySoft,
                   ),
                 ),
             ],
           ),
-          const SizedBox(width: 18),
+          const SizedBox(width: 24),
+          // Icon
+          Icon(icon, color: AppColors.textPrimary, size: 28),
+          const SizedBox(width: 16),
+          // Texts
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.only(bottom: 18),
+              padding: const EdgeInsets.only(bottom: 32),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title, style: Theme.of(context).textTheme.titleLarge),
+                  Text(
+                    title,
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          fontWeight: FontWeight.w600,
+                        ),
+                  ),
                   const SizedBox(height: 8),
-                  Text(description, style: Theme.of(context).textTheme.bodyMedium),
+                  Text(
+                    description,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          height: 1.5,
+                        ),
+                  ),
                 ],
               ),
             ),
@@ -142,32 +168,29 @@ class _ServiceTile extends StatelessWidget {
 }
 
 class _StatsGrid extends StatelessWidget {
-  const _StatsGrid();
+  const _StatsGrid({required this.stats});
+
+  final List<ProfileStat> stats;
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final width = constraints.maxWidth;
-        final crossAxisCount = width > 640 ? 3 : 1;
-        final aspectRatio = width > 640 ? 1.4 : 2.6;
-
-        return GridView.count(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          crossAxisCount: crossAxisCount,
-          crossAxisSpacing: 16,
-          mainAxisSpacing: 16,
-          childAspectRatio: aspectRatio,
-          children: const [
-            _StatCard(value: '120+', label: 'Projects'),
-            _StatCard(value: '95%', label: 'Client satisfaction'),
-            _StatCard(value: '10+', label: 'Years of experience'),
-          ],
-        );
-      },
+    return Wrap(
+      spacing: 48,
+      runSpacing: 32,
+      children: stats
+          .map((stat) => _StatCard(value: stat.value, label: stat.label))
+          .toList(growable: false),
     );
   }
+}
+
+IconData _iconFor(String iconName) {
+  return switch (iconName) {
+    'language' => Icons.code_rounded,
+    'phone_android' => Icons.smartphone_rounded,
+    'cloud_done' => Icons.cloud_queue_rounded,
+    _ => Icons.circle_outlined,
+  };
 }
 
 class _StatCard extends StatelessWidget {
@@ -181,43 +204,39 @@ class _StatCard extends StatelessWidget {
     final symbolIndex = value.indexOf(RegExp(r'[+%]'));
     final hasSymbol = symbolIndex != -1;
 
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(18),
-        child: FittedBox(
-          fit: BoxFit.scaleDown,
-          alignment: Alignment.centerLeft,
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(minWidth: 120),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                RichText(
-                  text: TextSpan(
-                    style: Theme.of(context).textTheme.headlineMedium,
-                    children: [
-                      TextSpan(
-                        text: hasSymbol ? value.substring(0, symbolIndex) : value,
-                      ),
-                      if (hasSymbol)
-                        TextSpan(
-                          text: value.substring(symbolIndex),
-                          style: const TextStyle(color: AppColors.primary),
-                        ),
-                    ],
-                  ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        RichText(
+          text: TextSpan(
+            style: Theme.of(context).textTheme.displaySmall?.copyWith(
+              fontWeight: FontWeight.w800,
+              color: AppColors.textPrimary,
+            ),
+            children: [
+              TextSpan(
+                text: hasSymbol ? value.substring(0, symbolIndex) : value,
+              ),
+              if (hasSymbol)
+                TextSpan(
+                  text: value.substring(symbolIndex),
+                  style: const TextStyle(color: AppColors.primary),
                 ),
-                const SizedBox(height: 8),
-                SizedBox(
-                  width: 140,
-                  child: Text(label, style: Theme.of(context).textTheme.bodyMedium),
-                ),
-              ],
+            ],
+          ),
+        ),
+        const SizedBox(height: 8),
+        SizedBox(
+          width: 120, // Let the text wrap naturally below the large number
+          child: Text(
+            label, 
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: AppColors.textMuted,
             ),
           ),
         ),
-      ),
+      ],
     );
   }
 }

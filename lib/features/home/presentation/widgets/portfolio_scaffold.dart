@@ -130,7 +130,7 @@ class _BrandMark extends StatelessWidget {
       text: TextSpan(
         style: style,
         children: const [
-          TextSpan(text: 'Jensen'),
+          TextSpan(text: 'Mostafa'),
           TextSpan(
             text: '.',
             style: TextStyle(color: AppColors.primary),

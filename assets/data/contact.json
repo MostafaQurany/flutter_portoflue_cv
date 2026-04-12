@@ -1,0 +1,36 @@
+{
+  "title": "Let's build your next Flutter app",
+  "summary": "Open to remote Flutter development opportunities, collaborative teams, and product-focused mobile app work with strong architecture and polished UI.",
+  "items": [
+    {
+      "type": "email",
+      "label": "mostafa.qurany.prog@gmail.com"
+    },
+    {
+      "type": "phone",
+      "label": "+201149075894"
+    },
+    {
+      "type": "location",
+      "label": "Beni Suef, Egypt | Open to Remote"
+    },
+    {
+      "type": "linkedin",
+      "label": "linkedin.com/in/mostafa-qurany-b1699b1b7"
+    },
+    {
+      "type": "github",
+      "label": "github.com/MostafaQurany"
+    }
+  ],
+  "infoCards": [
+    {
+      "title": "Current experience",
+      "description": "Senior Flutter Developer at TelNova & Innovation Stars, building enterprise-grade mobile apps with modular architecture, offline-first solutions, and POS integrations."
+    },
+    {
+      "title": "Education & learning",
+      "description": "B.Sc. in Computer Science from Beni Suef University (2020-2023). Participated in ACPC (Arab Collegiate Programming Contest)."
+    }
+  ]
+}
