@@ -2,22 +2,30 @@
   {
     "title": "Cater Station",
     "subtitle": "SaaS Platform",
-    "description": "Multi-role event & catering system with booking, payouts, and role dashboards.",
+    "cardDescription": "A multi-role event and catering platform with booking workflows, payout handling, and dedicated dashboards for different user roles.",
+    "fullDescription": "Cater Station is a SaaS-based event and catering management platform designed to support multiple user roles within one system. The application streamlines booking operations, payout management, and role-based dashboards to provide a smooth experience for administrators, vendors, and service providers. It was built to manage complex workflows in the catering and events domain while maintaining clear separation of responsibilities and scalable architecture.",
     "technologies": [
       "Flutter",
       "Clean Architecture",
       "Role-Based Systems"
     ],
+    "logo": "assets/images/logos/cater_station_logo.png",
     "screenshots": [
       "https://picsum.photos/seed/0_0/800/600",
       "https://picsum.photos/seed/0_1/800/600",
       "https://picsum.photos/seed/0_2/800/600"
-    ]
+    ],
+    "links": {
+      "googlePlay": "",
+      "appStore": "",
+      "githubUrl": ""
+    }
   },
   {
     "title": "Parking Management System",
     "subtitle": "Smart Parking Solution",
-    "description": "Smart parking solution with POS/Sunmi printer integration for invoice generation and QR-based vehicle tracking.",
+    "cardDescription": "A smart parking app with POS and Sunmi printer integration, invoice generation, and QR-based vehicle tracking.",
+    "fullDescription": "Parking Management System is a smart parking solution built to simplify parking operations through digital tracking and automated invoicing. The application supports POS workflows and Sunmi printer integration for fast invoice generation, while QR-based vehicle tracking helps manage entries and exits more efficiently. It was designed to improve operational accuracy, reduce manual work, and provide a reliable workflow for parking businesses.",
     "technologies": [
       "Flutter",
       "BLoC",
@@ -25,63 +33,99 @@
       "QR Code",
       "Local DB"
     ],
+    "logo": "assets/images/logos/parking_management_logo.png",
     "screenshots": [
       "https://picsum.photos/seed/1_0/800/600",
       "https://picsum.photos/seed/1_1/800/600",
       "https://picsum.photos/seed/1_2/800/600"
-    ]
+    ],
+    "links": {
+      "googlePlay": "",
+      "appStore": "",
+      "githubUrl": ""
+    }
   },
   {
     "title": "Wafy Restaurant POS",
     "subtitle": "Tablet-based POS",
-    "description": "Tablet-based restaurant management app with offline-first menu caching and table state management.",
+    "cardDescription": "A restaurant POS application with offline-first menu caching, table management, and invoice handling for tablet devices.",
+    "fullDescription": "Wafy Restaurant POS is a tablet-based restaurant management application designed to support day-to-day operations inside dining environments. The system includes offline-first menu caching, table state management, and invoice workflows to ensure stable performance even when connectivity is limited. It was built to help restaurants manage orders, tables, and billing more effectively while delivering a responsive and practical point-of-sale experience.",
     "technologies": [
       "Flutter",
       "Riverpod",
       "Hive",
       "Invoice System"
     ],
+    "logo": "assets/images/logos/wafy_restaurant_pos_logo.png",
     "screenshots": [
       "https://picsum.photos/seed/2_0/800/600",
       "https://picsum.photos/seed/2_1/800/600",
       "https://picsum.photos/seed/2_2/800/600"
-    ]
+    ],
+    "links": {
+      "googlePlay": "",
+      "appStore": "",
+      "githubUrl": ""
+    }
   },
   {
-    "title": "Dr. DrugJo Medical Platform",
-    "subtitle": "Healthcare App",
-    "description": "Comprehensive medical platform serving doctors, nurses, pharmacies with drug databases, directory, quizzes, and job listings.",
+    "title": "DrDrugJo",
+    "subtitle": "Medical Reference Platform",
+    "cardDescription": "A healthcare reference app that combines drug data, medical learning tools, quizzes, and career resources for doctors, pharmacists, and healthcare professionals.",
+    "fullDescription": "DrDrugJo is a healthcare reference platform built for doctors, pharmacists, and healthcare professionals in Jordan and the Arab region. It combines a comprehensive medicine database with verified medical references, helping users access important pharmacological details such as dosages, interactions, and updated drug information. Beyond reference content, the app supports professional growth through interactive quizzes, tests, certificates, and learning progress tracking. It also includes a career and community section with medical job opportunities, healthcare updates, and notifications about new drugs and industry news. The platform is designed to serve as an educational and professional resource in one application, while remaining strictly informational rather than diagnostic or treatment-focused.",
     "technologies": [
       "Flutter",
       "Firebase",
-      "Multi-Role Architecture"
+      "Medical Database",
+      "Quiz System",
+      "Progress Tracking",
+      "Multi-Section Architecture"
     ],
+    "logo": "assets/images/dr_drug/drdrugjo_logo.png",
     "screenshots": [
-      "https://picsum.photos/seed/3_0/800/600",
-      "https://picsum.photos/seed/3_1/800/600",
-      "https://picsum.photos/seed/3_2/800/600"
-    ]
+      "assets/images/dr_drug/unnam22ed.png",
+      "assets/images/dr_drug/unname1d.png",
+      "assets/images/dr_drug/unname11d.png",
+      "assets/images/dr_drug/unnamed.png",
+      "assets/images/dr_drug/unnamed2.png",
+      "assets/images/dr_drug/unnamed4.png",
+      "assets/images/dr_drug/unnamed5.png",
+      "assets/images/dr_drug/unnamed6.png"
+    ],
+    "links": {
+      "googlePlay": "https://play.google.com/store/apps/details?id=com.drdrugjo.medical&hl=en",
+      "appStore": "",
+      "githubUrl": ""
+    }
   },
   {
     "title": "Invotek Company Management",
     "subtitle": "Enterprise Management",
-    "description": "Enterprise management system for products, customers, expenses, and tax invoices with granular user permissions.",
+    "cardDescription": "An enterprise management system for products, customers, expenses, and tax invoices with detailed permission control.",
+    "fullDescription": "Invotek Company Management is an enterprise business solution built to manage core company operations in one place. The system covers products, customers, expenses, and tax invoices while supporting granular user permissions for different staff roles. It was designed to improve internal workflow organization, financial tracking, and operational control, making it suitable for businesses that need structured access management and reliable administrative tools.",
     "technologies": [
       "Flutter",
       "BLoC",
       "POS Printing",
       "Permission System"
     ],
+    "logo": "assets/images/logos/invotek_logo.png",
     "screenshots": [
       "https://picsum.photos/seed/4_0/800/600",
       "https://picsum.photos/seed/4_1/800/600",
       "https://picsum.photos/seed/4_2/800/600"
-    ]
+    ],
+    "links": {
+      "googlePlay": "",
+      "appStore": "",
+      "githubUrl": ""
+    }
   },
   {
     "title": "Halla App",
     "subtitle": "Smart Networking",
-    "description": "A smart networking app for digital contact sharing using QR, NFC, and AI-generated job tags. Supports offline syncing and local/cloud storage.",
+    "cardDescription": "A smart networking app for digital contact sharing through QR, NFC, and AI-generated job tags with offline and cloud sync support.",
+    "fullDescription": "Halla App is a smart networking platform built to modernize how users exchange and manage professional contacts. The application supports digital contact sharing through QR codes and NFC, while also using AI-generated job tags to enrich profile discovery and categorization. It includes offline syncing capabilities and supports both local and cloud storage, making it practical for real-world networking scenarios where internet availability may vary. The project was designed with a scalable architecture to support profile sharing, synchronization, and contact management in a modern mobile experience.",
     "technologies": [
       "Flutter",
       "Firebase",
@@ -91,16 +135,23 @@
       "BLoC",
       "Clean Architecture"
     ],
+    "logo": "assets/images/logos/halla_logo.png",
     "screenshots": [
       "https://picsum.photos/seed/5_0/800/600",
       "https://picsum.photos/seed/5_1/800/600",
       "https://picsum.photos/seed/5_2/800/600"
-    ]
+    ],
+    "links": {
+      "googlePlay": "",
+      "appStore": "",
+      "githubUrl": ""
+    }
   },
   {
     "title": "Wasla App",
     "subtitle": "Graduation Project",
-    "description": "A smart delivery collaboration app connecting users to buy products from other cities with travelers. Features secure in-app chat, Paymob integration, and NLP.",
+    "cardDescription": "A smart delivery collaboration app connecting users with travelers to buy and ship products across cities with chat and payment integration.",
+    "fullDescription": "Wasla App is a smart delivery collaboration platform that connects users who want to purchase products from other cities with travelers who can deliver them. The application includes secure in-app chat for communication, Paymob integration for digital payments, and NLP-based functionality to enhance parts of the user experience. Built as a graduation project, it focuses on solving practical delivery and marketplace coordination challenges through a mobile-first approach with real-time communication and secure workflows.",
     "technologies": [
       "Flutter",
       "Firebase",
@@ -109,16 +160,23 @@
       "NLP",
       "BLoC"
     ],
+    "logo": "assets/images/logos/wasla_logo.png",
     "screenshots": [
       "https://picsum.photos/seed/6_0/800/600",
       "https://picsum.photos/seed/6_1/800/600",
       "https://picsum.photos/seed/6_2/800/600"
-    ]
+    ],
+    "links": {
+      "googlePlay": "",
+      "appStore": "",
+      "githubUrl": ""
+    }
   },
   {
     "title": "Taagira App",
     "subtitle": "Car Rental App",
-    "description": "A mobile car rental app built from scratch that allows users to rent or list vehicles with location-based search and secure authentication.",
+    "cardDescription": "A car rental platform that allows users to rent or list vehicles with location-based search and secure authentication.",
+    "fullDescription": "Taagira App is a mobile car rental platform built from scratch to allow users to browse, rent, or list vehicles through a simple and secure experience. The app includes location-based search to help users discover relevant cars nearby and uses secure authentication to support trusted access to the platform. It was designed to provide a clear rental flow for both customers and vehicle owners while keeping the experience intuitive and scalable.",
     "technologies": [
       "Flutter",
       "Firebase",
@@ -127,26 +185,39 @@
       "BLoC",
       "Geolocation"
     ],
+    "logo": "assets/images/logos/taagira_logo.png",
     "screenshots": [
       "https://picsum.photos/seed/7_0/800/600",
       "https://picsum.photos/seed/7_1/800/600",
       "https://picsum.photos/seed/7_2/800/600"
-    ]
+    ],
+    "links": {
+      "googlePlay": "",
+      "appStore": "",
+      "githubUrl": ""
+    }
   },
   {
     "title": "V-School App",
     "subtitle": "Education Management",
-    "description": "A school management platform enabling teachers to manage lessons, attendance, and assignments with real-time sync.",
+    "cardDescription": "A school management platform that helps teachers manage lessons, attendance, assignments, and real-time educational workflows.",
+    "fullDescription": "V-School App is an education management platform designed to support teachers and school workflows through a connected mobile experience. The app enables lesson management, attendance tracking, and assignment handling while using real-time synchronization to keep educational data updated. It was built to simplify day-to-day academic operations and provide a more organized digital environment for school management and teacher productivity.",
     "technologies": [
       "Flutter",
       "MVVM",
       "RESTful APIs",
       "Firebase"
     ],
+    "logo": "assets/images/logos/v_school_logo.png",
     "screenshots": [
       "https://picsum.photos/seed/8_0/800/600",
       "https://picsum.photos/seed/8_1/800/600",
       "https://picsum.photos/seed/8_2/800/600"
-    ]
+    ],
+    "links": {
+      "googlePlay": "",
+      "appStore": "",
+      "githubUrl": ""
+    }
   }
 ]
