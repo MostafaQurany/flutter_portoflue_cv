@@ -64,6 +64,7 @@ flutter:
     - assets/data/
     - assets/images/
     - assets/docs/
+    - assets/images/dr_drug/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

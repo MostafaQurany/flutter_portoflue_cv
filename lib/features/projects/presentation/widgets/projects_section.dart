@@ -28,7 +28,7 @@ class ProjectsSection extends ConsumerWidget {
             ),
             const SizedBox(height: 16),
             Text(
-              'A few recent builds that show how I structure products, interfaces, and maintainable delivery workflows.',
+              'Each entry now pulls from the enriched project dataset, including logos, platform links, longer descriptions, and technology stacks.',
               style: Theme.of(context).textTheme.bodyLarge,
             ),
             const SizedBox(height: 24),
@@ -56,14 +56,14 @@ class _ProjectsGrid extends StatelessWidget {
   const _ProjectsGrid({required this.crossAxisCount, required this.projects});
 
   final int crossAxisCount;
-  final List<Project> projects;
+  final List<ProjectModel> projects;
 
   @override
   Widget build(BuildContext context) {
     final aspectRatio = switch (crossAxisCount) {
-      1 => 0.98,
-      2 => 0.82,
-      _ => 0.78,
+      1 => 0.72,
+      2 => 0.68,
+      _ => 0.66,
     };
 
     return GridView.builder(
@@ -87,38 +87,34 @@ class _ProjectsGrid extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    height: 160,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(18),
-                      gradient: const LinearGradient(
-                        colors: [AppColors.primarySoft, AppColors.surfaceMuted],
-                      ),
-                    ),
-                    alignment: Alignment.center,
-                    child: Text(
-                      project.title,
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.titleLarge,
+                  _ProjectCardHero(project: project),
+                  const SizedBox(height: 18),
+                  Text(
+                    project.subtitle,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                      color: Theme.of(context).colorScheme.primary,
                     ),
                   ),
-                  const SizedBox(height: 18),
+                  const SizedBox(height: 6),
                   Text(
                     project.title,
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    project.description,
-                    maxLines: 3,
+                    project.cardDescription,
+                    maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
-                  const Spacer(),
+                  const SizedBox(height: 18),
                   Wrap(
                     spacing: 8,
                     runSpacing: 8,
-                    children: project.stack
+                    children: project.technologies
+                        .take(crossAxisCount == 1 ? 3 : 2)
                         .map<Widget>(
                           (item) => Container(
                             padding: const EdgeInsets.symmetric(
@@ -135,12 +131,45 @@ class _ProjectsGrid extends StatelessWidget {
                         )
                         .toList(),
                   ),
-                  const SizedBox(height: 16),
-                  TextButton(
-                    onPressed: () =>
-                        _openRepository(context, project.githubUrl),
-                    child: const Text('View repository'),
+                  const Spacer(),
+                  if (project.technologies.length > (crossAxisCount == 1 ? 3 : 2))
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 12),
+                      child: Text(
+                        '+${project.technologies.length - (crossAxisCount == 1 ? 3 : 2)} more technologies',
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          color: AppColors.textMuted,
+                        ),
+                      ),
+                    ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: OutlinedButton(
+                          onPressed: () => context.push('/project/$index'),
+                          child: const Text('View details'),
+                        ),
+                      ),
+                      if (_hasExternalLinks(project)) ...[
+                        const SizedBox(width: 12),
+                        IconButton.filledTonal(
+                          onPressed: () => _openPrimaryLink(context, project),
+                          icon: const Icon(Icons.open_in_new_rounded),
+                          tooltip: 'Open project link',
+                        ),
+                      ],
+                    ],
                   ),
+                  if (!_hasExternalLinks(project))
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8),
+                      child: Text(
+                        'More in details page.',
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          color: AppColors.textMuted,
+                        ),
+                      ),
+                    ),
                 ],
               ),
             ),
@@ -150,15 +179,158 @@ class _ProjectsGrid extends StatelessWidget {
     );
   }
 
-  Future<void> _openRepository(BuildContext context, String url) async {
+  bool _hasExternalLinks(ProjectModel project) {
+    return project.links.githubUrl.isNotEmpty ||
+        project.links.googlePlay.isNotEmpty ||
+        project.links.appStore.isNotEmpty;
+  }
+
+  Future<void> _openPrimaryLink(BuildContext context, ProjectModel project) async {
+    final url = project.links.googlePlay.isNotEmpty
+        ? project.links.googlePlay
+        : project.links.appStore.isNotEmpty
+            ? project.links.appStore
+            : project.links.githubUrl;
     final uri = Uri.tryParse(url);
 
     if (uri == null || !await launchUrl(uri)) {
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Unable to open repository link.')),
+          const SnackBar(content: Text('Unable to open project link.')),
         );
       }
     }
+  }
+}
+
+class _ProjectCardHero extends StatelessWidget {
+  const _ProjectCardHero({required this.project});
+
+  final ProjectModel project;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 180,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(18),
+        gradient: const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [AppColors.primarySoft, AppColors.surfaceMuted],
+        ),
+      ),
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          Positioned(
+            top: -18,
+            right: -18,
+            child: Container(
+              width: 92,
+              height: 92,
+              decoration: const BoxDecoration(
+                color: AppColors.primarySoft,
+                shape: BoxShape.circle,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Center(
+                    child: _ProjectImage(
+                      imagePath: project.logo,
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 12),
+                Text(
+                  project.subtitle,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: AppColors.textPrimary,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _ProjectImage extends StatelessWidget {
+  const _ProjectImage({required this.imagePath, this.fit = BoxFit.cover});
+
+  final String imagePath;
+  final BoxFit fit;
+
+  @override
+  Widget build(BuildContext context) {
+    final normalizedPath = imagePath.startsWith('assets/')
+        ? imagePath.substring('assets/'.length)
+        : imagePath;
+
+    if (imagePath.startsWith('http')) {
+      return Image.network(
+        imagePath,
+        fit: fit,
+        errorBuilder: (context, error, stackTrace) => const _ProjectImageFallback(
+          label: 'Image unavailable',
+        ),
+      );
+    }
+
+    return Image.asset(
+      normalizedPath,
+      fit: fit,
+      errorBuilder: (context, error, stackTrace) => const _ProjectImageFallback(
+        label: 'Asset missing',
+      ),
+    );
+  }
+}
+
+class _ProjectImageFallback extends StatelessWidget {
+  const _ProjectImageFallback({required this.label});
+
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: AppColors.surface,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: AppColors.border),
+      ),
+      alignment: Alignment.center,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Icon(
+            Icons.photo_library_outlined,
+            color: AppColors.textMuted,
+            size: 30,
+          ),
+          const SizedBox(height: 8),
+          Text(
+            label,
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
+              color: AppColors.textMuted,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
