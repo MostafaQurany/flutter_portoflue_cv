@@ -46,10 +46,10 @@
     }
   },
   {
-    "title": "Wafy Restaurant POS",
-    "subtitle": "Tablet-based POS",
-    "cardDescription": "A restaurant POS application with offline-first menu caching, table management, and invoice handling for tablet devices.",
-    "fullDescription": "Wafy Restaurant POS is a tablet-based restaurant management application designed to support day-to-day operations inside dining environments. The system includes offline-first menu caching, table state management, and invoice workflows to ensure stable performance even when connectivity is limited. It was built to help restaurants manage orders, tables, and billing more effectively while delivering a responsive and practical point-of-sale experience.",
+    "title": "Wafy-App",
+    "subtitle": "Restaurant POS",
+    "cardDescription": "A restaurant and cafe POS system focused on faster service, table and order control, instant receipt printing, and live sales visibility.",
+    "fullDescription": "Wafy-App is a point-of-sale and restaurant or cafe management system built to speed up service and reduce operational errors. It helps teams manage tables and orders, merge or transfer tickets, print receipts instantly through supported network or Bluetooth printers, and configure flexible menus with sizes, toppings, and dynamic pricing. The app also provides live table and order status, daily and monthly sales reporting, best-seller insights, role-based employee permissions, partial offline operation in supported setups, and an Arabic RTL experience designed for restaurants, cafes, bakeries, and fast food businesses.",
     "technologies": [
       "Flutter",
       "Riverpod",
@@ -57,9 +57,18 @@
       "Invoice System"
     ],
     "logo": "assets/images/logos/wafy_restaurant_pos_logo.png",
-    "screenshots": [],
+    "screenshots": [
+      "https://play-lh.googleusercontent.com/7UZ4_B4uoLiNbFJY5kNQ_Xyo9JK2rcPK0LKtDKTKWMVJWs5LVn09qpHhIiq1CPN9dRqRaYwI9Op52R0YK3gZq1w=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/iTe9yY8H2ryQvNH6s3HEg7J55t0MdFN1SaHzUW_o9HdjiWxBsJhCqNnNoqNEcF4ma0mzKWHkrXHdYSbdPX4H-5Q=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/VIieamouPabpsqUI121xECOhlcIepWCnu33L325oULpKkgrt-dPH0rsuHQ3jKS-vnc0_NN21nkH9xld_qonaKw=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/zABlX2AV1wGaIWkqE_xyd9mP_fnGEjku5UBfI5znAiRvA7Sur5xmh2XG6ztkWcc7SSws1iYywYnT1h8U_ISTXQ=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/byNSc_BBVk-KUvW9Xl-_2Jrd0x4Ybt2HcYkM_np53oF-J8oiF5kidZKiL4OJ390RxziieKCh9WFWC7ylj5zt=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/EuraxgQSus81vg3WV9hQCVBiPyyMvMBLOXO1F3Pvnhl2EeEfLl1gw-3UK_80czE8dp0E8DARVVbd6XMjTgohEQ=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/MQg7yjrbmHDm5gNzOkF2yaUkj-UlD19sdiWYII7q38ziIn88aYZ_gizIsrNKNf2nlFAXdImt5VvnE1RY0bvd=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/EdsjJFNhDnTJGaxJYM8SEuJzL_KpqmaczC0OKmpcESUYhj5zcMD9QD0XXwE_BvQY-GuLFn8H0JAqPIDfGZMb0A=w1052-h592-rw"
+    ],
     "links": {
-      "googlePlay": "",
+      "googlePlay": "https://play.google.com/store/apps/details?id=com.wafy.restaurant",
       "appStore": "",
       "githubUrl": ""
     }
@@ -96,10 +105,10 @@
     }
   },
   {
-    "title": "Invotek Company Management",
-    "subtitle": "Enterprise Management",
-    "cardDescription": "An enterprise management system for products, customers, expenses, and tax invoices with detailed permission control.",
-    "fullDescription": "Invotek Company Management is an enterprise business solution built to manage core company operations in one place. The system covers products, customers, expenses, and tax invoices while supporting granular user permissions for different staff roles. It was designed to improve internal workflow organization, financial tracking, and operational control, making it suitable for businesses that need structured access management and reliable administrative tools.",
+    "title": "Invotek",
+    "subtitle": "E-Invoicing System",
+    "cardDescription": "A business management and e-invoicing app with Jordanian Fatoorah integration, customer and product tools, expense tracking, and detailed access control.",
+    "fullDescription": "Invotek is a comprehensive e-invoicing and business management system designed to help companies handle invoicing, customers, products, expenses, and reporting from one place. It supports direct integration with the Jordanian National Invoicing System (Fatoorah), making it possible to create, edit, return, and send tax invoices efficiently. The app also includes inventory-aware product management, customer communication tools, dashboard reporting, Bluetooth and thermal invoice printing, bilingual Arabic and English support, and a granular permission model with extensive user access control for small, medium, and large businesses.",
     "technologies": [
       "Flutter",
       "BLoC",
@@ -107,9 +116,18 @@
       "Permission System"
     ],
     "logo": "assets/images/logos/invotek_logo.png",
-    "screenshots": [],
+    "screenshots": [
+      "https://play-lh.googleusercontent.com/1K3e9JcoZ6_juCasmL5wXILXjgjjhLyDX3_QZxPNSgdgzyDUH9BlIBbwzKhNth2PSwNKlqgWeQFnk-EMDha-orw=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/U2sWOhyAO0ixzVgtdN3C7pB2M6DpqCaXxF6ns3oLvI5en1qDPyDr-jo4jDiuUevp3W6OPnHAv78EBSTiZ86lKA=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/f8KvjR1yizsMuZ60IlZvfRH8iLBxmBo8GYoPHiA8JHndefDYHSZ2gmg425cSpIbPV9vw3vgkDqD491MfSzI9ZwU=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/zNJGv_eTGw12dNhH-4gEt5Ll62J3rb5nrGzH4rnhhiBwhfNKVK7xha7H_WDvYVSLRuM4Ug62JknZy-zxUJkIXg=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/wC_-lVuEbnOvx-6SnLqmLRa0OlX7dJluZBkaVFfP8FnaB_Xi_zuOOf6a62IkF8Q9_qiWZJb4n5PLOpS7pt3Fz38=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/M8n2WoitAa-XsOcHDjVPPsHLsMUHs1wAXvXr2gS6YE5neTNO-W2KTK8MNFuBLR4ycTJl9fD5eOjFis4yhuItZGs=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/qsZII2eKeBkRQSeGjJ8lD6zVJbCutQw1DWSqrLI7LldtTmiNnLz9wbK-_wbVcV6OZ48Kby5zld-IUZBLU1dILw=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/LNAfU8LJyj-pDD-qD8aqTgcprbt3CA7Q479BBecpnhgYEclu3RBRL3Ebv5K8RuDobwl7E7KkQ_lOSWrpPbe-=w1052-h592-rw"
+    ],
     "links": {
-      "googlePlay": "",
+      "googlePlay": "https://play.google.com/store/apps/details?id=com.invotek.park&hl=en",
       "appStore": "",
       "githubUrl": ""
     }

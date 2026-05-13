@@ -46,10 +46,10 @@
     }
   },
   {
-    "title": "Wafy Restaurant POS",
-    "subtitle": "نظام POS للأجهزة اللوحية",
-    "cardDescription": "تطبيق POS للمطاعم مع تخزين مؤقت للمنيو، وإدارة الطاولات، ومعالجة الفواتير للأجهزة اللوحية.",
-    "fullDescription": "Wafy Restaurant POS هو تطبيق إدارة مطاعم مصمم لدعم العمليات اليومية. يتضمن النظام تخزينًا مؤقتًا للمنيو للعمل بدون إنترنت، وإدارة حالة الطاولات، وسير عمل الفواتير لضمان أداء مستقر حتى عند محدودية الاتصال. تم بناؤه لمساعدة المطاعم في إدارة الطلبات والطاولات والفوترة بفعالية.",
+    "title": "Wafy-App",
+    "subtitle": "نظام نقاط بيع للمطاعم",
+    "cardDescription": "نظام نقاط بيع وإدارة للمطاعم والمقاهي يسرّع الخدمة عبر إدارة الطاولات والطلبات والطباعة الفورية مع تقارير مبيعات مباشرة.",
+    "fullDescription": "Wafy-App هو نظام نقاط بيع وإدارة للمطاعم والمقاهي صُمم لتسريع الخدمة وتقليل الأخطاء التشغيلية. يتيح إنشاء الطلبات ودمجها ونقلها بين الطاولات بسهولة، مع طباعة فورية للفواتير عبر الطابعات الشبكية أو البلوتوث المدعومة. كما يدعم إعداد قوائم مرنة بالعناصر والأحجام والإضافات مع تسعير ديناميكي، ويوفر متابعة مباشرة لحالة الطاولات والطلبات، وتقارير يومية وشهرية للمبيعات، وإحصاءات للأصناف الأكثر طلبًا، وصلاحيات منفصلة للموظفين، وتشغيلًا جزئيًا بدون إنترنت في الإعدادات المدعومة، إلى جانب واجهة عربية باتجاه RTL مناسبة للمطاعم والمقاهي والمخابز ومنافذ الوجبات السريعة.",
     "technologies": [
       "Flutter",
       "Riverpod",
@@ -57,9 +57,18 @@
       "Invoice System"
     ],
     "logo": "assets/images/logos/wafy_restaurant_pos_logo.png",
-    "screenshots": [],
+    "screenshots": [
+      "https://play-lh.googleusercontent.com/7UZ4_B4uoLiNbFJY5kNQ_Xyo9JK2rcPK0LKtDKTKWMVJWs5LVn09qpHhIiq1CPN9dRqRaYwI9Op52R0YK3gZq1w=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/iTe9yY8H2ryQvNH6s3HEg7J55t0MdFN1SaHzUW_o9HdjiWxBsJhCqNnNoqNEcF4ma0mzKWHkrXHdYSbdPX4H-5Q=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/VIieamouPabpsqUI121xECOhlcIepWCnu33L325oULpKkgrt-dPH0rsuHQ3jKS-vnc0_NN21nkH9xld_qonaKw=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/zABlX2AV1wGaIWkqE_xyd9mP_fnGEjku5UBfI5znAiRvA7Sur5xmh2XG6ztkWcc7SSws1iYywYnT1h8U_ISTXQ=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/byNSc_BBVk-KUvW9Xl-_2Jrd0x4Ybt2HcYkM_np53oF-J8oiF5kidZKiL4OJ390RxziieKCh9WFWC7ylj5zt=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/EuraxgQSus81vg3WV9hQCVBiPyyMvMBLOXO1F3Pvnhl2EeEfLl1gw-3UK_80czE8dp0E8DARVVbd6XMjTgohEQ=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/MQg7yjrbmHDm5gNzOkF2yaUkj-UlD19sdiWYII7q38ziIn88aYZ_gizIsrNKNf2nlFAXdImt5VvnE1RY0bvd=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/EdsjJFNhDnTJGaxJYM8SEuJzL_KpqmaczC0OKmpcESUYhj5zcMD9QD0XXwE_BvQY-GuLFn8H0JAqPIDfGZMb0A=w1052-h592-rw"
+    ],
     "links": {
-      "googlePlay": "",
+      "googlePlay": "https://play.google.com/store/apps/details?id=com.wafy.restaurant",
       "appStore": "",
       "githubUrl": ""
     }
@@ -96,10 +105,10 @@
     }
   },
   {
-    "title": "Invotek Company Management",
-    "subtitle": "إدارة الشركات",
-    "cardDescription": "نظام إدارة مؤسسي للمنتجات والعملاء والمصاريف وفواتير الضرائب مع تحكم دقيق في الصلاحيات.",
-    "fullDescription": "Invotek هو حل أعمال مؤسسي مصمم لإدارة العمليات الأساسية للشركة في مكان واحد. يغطي النظام المنتجات والعملاء والمصاريف وفواتير الضرائب مع دعم صلاحيات المستخدمين لمختلف أدوار الموظفين. تم تصميمه لتحسين تنظيم سير العمل الداخلي والتبع المالي.",
+    "title": "Invotek",
+    "subtitle": "نظام الفوترة الإلكترونية",
+    "cardDescription": "تطبيق لإدارة الأعمال والفوترة الإلكترونية مع تكامل فاتورة الأردن، وإدارة العملاء والمنتجات والمصاريف، وصلاحيات استخدام تفصيلية.",
+    "fullDescription": "Invotek هو نظام متكامل لإدارة الفوترة الإلكترونية والأعمال، صُمم لمساعدة الشركات على إدارة الفواتير والعملاء والمنتجات والمصاريف والتقارير من مكان واحد. يدعم تكاملًا مباشرًا مع نظام الفوترة الوطني الأردني فاتورة، مما يسهّل إنشاء الفواتير الضريبية وتعديلها وإرجاعها وإرسالها بكفاءة. كما يوفّر إدارة شاملة للعملاء والمنتجات مع تتبع للمخزون، ولوحة معلومات للتقارير والإحصاءات المالية، ودعم الطباعة عبر البلوتوث والطابعات الحرارية، ونظام صلاحيات متقدم للمستخدمين، إلى جانب دعم اللغتين العربية والإنجليزية بما يجعله مناسبًا للشركات الصغيرة والمتوسطة والكبيرة.",
     "technologies": [
       "Flutter",
       "BLoC",
@@ -107,9 +116,18 @@
       "Permission System"
     ],
     "logo": "assets/images/logos/invotek_logo.png",
-    "screenshots": [],
+    "screenshots": [
+      "https://play-lh.googleusercontent.com/1K3e9JcoZ6_juCasmL5wXILXjgjjhLyDX3_QZxPNSgdgzyDUH9BlIBbwzKhNth2PSwNKlqgWeQFnk-EMDha-orw=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/U2sWOhyAO0ixzVgtdN3C7pB2M6DpqCaXxF6ns3oLvI5en1qDPyDr-jo4jDiuUevp3W6OPnHAv78EBSTiZ86lKA=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/f8KvjR1yizsMuZ60IlZvfRH8iLBxmBo8GYoPHiA8JHndefDYHSZ2gmg425cSpIbPV9vw3vgkDqD491MfSzI9ZwU=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/zNJGv_eTGw12dNhH-4gEt5Ll62J3rb5nrGzH4rnhhiBwhfNKVK7xha7H_WDvYVSLRuM4Ug62JknZy-zxUJkIXg=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/wC_-lVuEbnOvx-6SnLqmLRa0OlX7dJluZBkaVFfP8FnaB_Xi_zuOOf6a62IkF8Q9_qiWZJb4n5PLOpS7pt3Fz38=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/M8n2WoitAa-XsOcHDjVPPsHLsMUHs1wAXvXr2gS6YE5neTNO-W2KTK8MNFuBLR4ycTJl9fD5eOjFis4yhuItZGs=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/qsZII2eKeBkRQSeGjJ8lD6zVJbCutQw1DWSqrLI7LldtTmiNnLz9wbK-_wbVcV6OZ48Kby5zld-IUZBLU1dILw=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/LNAfU8LJyj-pDD-qD8aqTgcprbt3CA7Q479BBecpnhgYEclu3RBRL3Ebv5K8RuDobwl7E7KkQ_lOSWrpPbe-=w1052-h592-rw"
+    ],
     "links": {
-      "googlePlay": "",
+      "googlePlay": "https://play.google.com/store/apps/details?id=com.invotek.park&hl=en",
       "appStore": "",
       "githubUrl": ""
     }
