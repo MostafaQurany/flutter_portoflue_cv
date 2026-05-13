@@ -1,0 +1,36 @@
+{
+  "title": "لنقم ببناء تطبيق فلاتر القادم الخاص بك",
+  "summary": "متاح لفرص تطوير فلاتر عن بعد، والفرق التعاونية، والعمل على تطبيقات الجوال التي تركز على المنتج مع هندسة قوية وواجهة مستخدم مصقولة.",
+  "items": [
+    {
+      "type": "email",
+      "label": "mostafa.qurany.prog@gmail.com"
+    },
+    {
+      "type": "phone",
+      "label": "+201149075894"
+    },
+    {
+      "type": "location",
+      "label": "بني سويف، مصر | متاح للعمل عن بعد"
+    },
+    {
+      "type": "linkedin",
+      "label": "linkedin.com/in/mostafa-qurany-b1699b1b7"
+    },
+    {
+      "type": "github",
+      "label": "github.com/MostafaQurany"
+    }
+  ],
+  "infoCards": [
+    {
+      "title": "الخبرة الحالية",
+      "description": "مطور فلاتر أول في TelNova & Innovation Stars، أقوم ببناء تطبيقات مؤسسية بهندسة مجزأة، وحلول تعمل بدون إنترنت، وتكاملات POS."
+    },
+    {
+      "title": "التعليم والتعلم",
+      "description": "بكالوريوس علوم الحاسب من جامعة بني سويف (2020-2023). شاركت في مسابقة البرمجة الجامعية العربية (ACPC)."
+    }
+  ]
+}
