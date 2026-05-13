@@ -3,6 +3,8 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../../core/localization/app_locale.dart';
+import '../../../../core/localization/app_strings.dart';
 import '../providers/content_providers.dart';
 
 class HeroSection extends ConsumerWidget {
@@ -20,6 +22,8 @@ class HeroSection extends ConsumerWidget {
     final theme = Theme.of(context);
     final primaryColor = theme.colorScheme.primary;
     final profileContentAsync = ref.watch(profileContentProvider);
+    final currentLocale = ref.watch(localeProvider);
+    final strings = AppStrings.of(currentLocale);
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -60,9 +64,19 @@ class HeroSection extends ConsumerWidget {
                     width: 40,
                     height: 2,
                     color: primaryColor,
-                    margin: const EdgeInsets.only(right: 12),
+                    margin: EdgeInsets.only(
+                      right: currentLocale == AppLocale.en ? 12 : 0,
+                      left: currentLocale == AppLocale.ar ? 12 : 0,
+                    ),
                   ),
-                  Text(content.name, style: theme.textTheme.displayMedium),
+                  Flexible(
+                    child: Text(
+                      content.name,
+                      style: theme.textTheme.displayMedium,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                    ),
+                  ),
                 ],
               )
                   .animate(delay: 200.ms)
@@ -143,14 +157,16 @@ class HeroSection extends ConsumerWidget {
                   
                   // Decorative accents (Chevrons)
                   Positioned(
-                    left: 0,
+                    left: currentLocale == AppLocale.en ? 0 : null,
+                    right: currentLocale == AppLocale.ar ? 0 : null,
                     top: 80,
-                    child: Text('<', style: TextStyle(color: primaryColor.withOpacity(0.5), fontSize: 40, fontWeight: FontWeight.w300)),
+                    child: Text(currentLocale == AppLocale.en ? '<' : '>', style: TextStyle(color: primaryColor.withOpacity(0.5), fontSize: 40, fontWeight: FontWeight.w300)),
                   ),
                   Positioned(
-                    right: 0,
+                    right: currentLocale == AppLocale.en ? 0 : null,
+                    left: currentLocale == AppLocale.ar ? 0 : null,
                     bottom: 60,
-                    child: Text('>', style: TextStyle(color: primaryColor.withOpacity(0.5), fontSize: 40, fontWeight: FontWeight.w300)),
+                    child: Text(currentLocale == AppLocale.en ? '>' : '<', style: TextStyle(color: primaryColor.withOpacity(0.5), fontSize: 40, fontWeight: FontWeight.w300)),
                   ),
 
                   // User portrait (background-removed image)
@@ -174,10 +190,13 @@ class HeroSection extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: textContent,
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: textContent,
+                    ),
                   ),
+                  const SizedBox(width: 24),
                   avatar,
                 ],
               );
@@ -192,8 +211,8 @@ class HeroSection extends ConsumerWidget {
               ],
             );
           },
-          loading: () => const Center(child: CircularProgressIndicator()),
-          error: (err, stack) => Center(child: Text('Error loading profile: $err')),
+          loading: () => Center(child: CircularProgressIndicator(color: primaryColor)),
+          error: (err, stack) => Center(child: Text('${strings.error}: $err')),
         );
       },
     );

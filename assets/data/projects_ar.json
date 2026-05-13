@@ -1,0 +1,200 @@
+[
+  {
+    "title": "Cater Station",
+    "subtitle": "منصة SaaS",
+    "cardDescription": "منصة متعددة الأدوار للمناسبات والتموين مع سير عمل الحجز، ومعالجة المدفوعات، ولوحات تحكم مخصصة.",
+    "fullDescription": "Cater Station هي منصة إدارة فعاليات وتموين تعتمد على نموذج SaaS، مصممة لدعم أدوار مستخدمين متعددة. يقوم التطبيق بتبسيط عمليات الحجز وإدارة المدفوعات ولوحات التحكم المخصصة لضمان تجربة سلسة للمسؤولين والبائعين ومزودي الخدمة. تم بناؤه لإدارة سير العمل المعقد في مجال التموين والفعاليات مع الحفاظ على فصل واضح للمسؤوليات وبنية قابلة للتوسع.",
+    "technologies": [
+      "Flutter",
+      "Clean Architecture",
+      "Role-Based Systems"
+    ],
+    "logo": "assets/images/logos/cater_station_logo.png",
+    "screenshots": [],
+    "links": {
+      "googlePlay": "",
+      "appStore": "",
+      "githubUrl": ""
+    }
+  },
+  {
+    "title": "باركن الوافي",
+    "subtitle": "حل مواقف السيارات الذكي",
+    "cardDescription": "تطبيق باركن الوافي هو الحل الأمثل لإدارة مواقف السيارات بسهولة وكفاءة، مصمم خصيصاً للحراس لإدارة نوبات العمل والفواتير.",
+    "fullDescription": "تطبيق باركن الوافي هو نظام متكامل لإدارة مواقف السيارات، يهدف إلى تسهيل العمليات اليومية للحراس والمشرفين. يتميز التطبيق بقدرته على إدارة اليوميات (Daily Shifts)، تتبع الرصيد الابتدائي والنهائي، وإنشاء فواتير ركن السيارات بسرعة فائقة. يدعم التطبيق نوعين من التسعير: الثابت وبالساعة، مع إمكانية مسح QR Code لإكمال الفواتير بسهولة. كما يتيح طباعة الفواتير مباشرة عبر طابعات POS المحمولة، ويوفر إحصائيات شاملة للمبيعات والسيارات النشطة في الوقت الفعلي، كل ذلك مع واجهة مستخدم عصرية وسهلة الاستخدام.",
+    "technologies": [
+      "Flutter",
+      "QR Code Scanning",
+      "Bluetooth POS Printing",
+      "Real-time Statistics",
+      "Shift Management",
+      "Dynamic Pricing"
+    ],
+    "logo": "assets/images/logos/parking_management_logo.png",
+    "screenshots": [
+      "https://play-lh.googleusercontent.com/Hy2bZYB4id_axBlpunmZY8FGMXsBvIDegUJw-Y7SFvr79h_hs1V9UBC2QBaLNT4Sj1m4UnL29JmQmA81aTie02M=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/s3DhQi4IRNCBxWu2NTGAjM7kulptEUly9ZB6oUkyqnCcpxTCt3k2ZFxWF4zaPIIlhkaNk6C4HdO8Ld0UflE4EQ=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/PfDTsZOFSQytljFETu-XzKaLNcIGtdNJ9oG07F-SOyCOXtGFHHEQl_3LM2LbzAtXh3PT3y17iAOB_Fcs1bBQ=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/Bwi_2Oy6iav4DN1xNQHMLxBpWVl-8fJ9gAW6wkIpgwnvo1pNXQAJodabGp7tlGBjJxgfheu5whKYB7i_M0c3gg=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/emS0cHTv313nlkq0jmGMVm5n2C0ho-BiCh1-RLSvCHY4b56UOe5FLmIEbXXP7WjCtqPocOT6VN3febTHntMWnw=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/6wJv83gYf7fzE-u0bJNRcjggaDVIiMEVLnUpg4gf9f8WRr7zQJHV-bl_NDT8W7lF6hM4gb1n6kJsYdkn6dtGpsk=w1052-h592-rw"
+    ],
+    "links": {
+      "googlePlay": "https://play.google.com/store/apps/details?id=com.teckpart.parkingtec",
+      "appStore": "",
+      "githubUrl": ""
+    }
+  },
+  {
+    "title": "Wafy Restaurant POS",
+    "subtitle": "نظام POS للأجهزة اللوحية",
+    "cardDescription": "تطبيق POS للمطاعم مع تخزين مؤقت للمنيو، وإدارة الطاولات، ومعالجة الفواتير للأجهزة اللوحية.",
+    "fullDescription": "Wafy Restaurant POS هو تطبيق إدارة مطاعم مصمم لدعم العمليات اليومية. يتضمن النظام تخزينًا مؤقتًا للمنيو للعمل بدون إنترنت، وإدارة حالة الطاولات، وسير عمل الفواتير لضمان أداء مستقر حتى عند محدودية الاتصال. تم بناؤه لمساعدة المطاعم في إدارة الطلبات والطاولات والفوترة بفعالية.",
+    "technologies": [
+      "Flutter",
+      "Riverpod",
+      "Hive",
+      "Invoice System"
+    ],
+    "logo": "assets/images/logos/wafy_restaurant_pos_logo.png",
+    "screenshots": [],
+    "links": {
+      "googlePlay": "",
+      "appStore": "",
+      "githubUrl": ""
+    }
+  },
+  {
+    "title": "DrDrugJo",
+    "subtitle": "منصة مرجعية طبية",
+    "cardDescription": "تطبيق مرجعي للرعاية الصحية يجمع بيانات الأدوية وأدوات التعلم الطبي واختبارات للأطباء والصيادلة.",
+    "fullDescription": "DrDrugJo هي منصة مرجعية للرعاية الصحية مصممة للأطباء والصيادلة في الأردن والمنطقة العربية. تجمع بين قاعدة بيانات شاملة للأدوية ومراجع طبية موثقة، مما يساعد المستخدمين على الوصول إلى تفاصيل دوائية هامة مثل الجرعات والتفاعلات. يدعم التطبيق النمو المهني من خلال اختبارات تفاعلية وشهادات وتتبع التقدم في التعلم.",
+    "technologies": [
+      "Flutter",
+      "Firebase",
+      "Medical Database",
+      "Quiz System",
+      "Progress Tracking",
+      "Multi-Section Architecture"
+    ],
+    "logo": "assets/images/dr_drug/drdrugjo_logo.png",
+    "screenshots": [
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/89/56/75/895675d9-d3bb-be23-76d9-aceefa0504f2/Simulator_Screenshot_-_iPhone_17_Pro_Max_-_2025-10-15_at_22.26.25.png/460x998bb.webp",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/25/43/c6/2543c6e1-a571-6bec-7f73-1f4100b17993/Simulator_Screenshot_-_iPhone_17_Pro_Max_-_2025-10-15_at_22.26.58.png/460x998bb.webp",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/c6/38/33/c63833b0-5492-a352-780b-66040eea5d6a/Simulator_Screenshot_-_iPhone_17_Pro_Max_-_2025-10-15_at_22.27.21.png/460x998bb.webp",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/3a/0b/0f/3a0b0f4d-7538-a8ed-1b03-d2f10ee7d0ae/Simulator_Screenshot_-_iPhone_17_Pro_Max_-_2025-10-15_at_22.26.38.png/460x998bb.webp",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/cc/01/40/cc0140aa-28b9-24ea-84ce-d39b4679db21/Simulator_Screenshot_-_iPhone_17_Pro_Max_-_2025-10-15_at_22.27.26.png/460x998bb.webp",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/05/fb/8d/05fb8d6b-18be-4f0e-ca81-4709b06414ed/Simulator_Screenshot_-_iPhone_17_Pro_Max_-_2025-10-15_at_22.27.15.png/460x998bb.webp",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/e3/42/6c/e3426c1a-c1d3-cbb2-9256-d932c0749087/Simulator_Screenshot_-_iPhone_17_Pro_Max_-_2025-10-15_at_22.26.29.png/300x650bb.webp",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/a4/74/0d/a4740d80-b1cf-dd63-5c3a-23314366d493/Simulator_Screenshot_-_iPhone_17_Pro_Max_-_2025-10-15_at_22.27.05.png/300x650bb.webp",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/90/54/82/90548293-bbd6-6cdb-ae0d-314c3cc7fe5d/Simulator_Screenshot_-_iPhone_17_Pro_Max_-_2025-10-15_at_22.26.34.png/300x650bb.webp"
+    ],
+    "links": {
+      "googlePlay": "https://play.google.com/store/apps/details?id=com.drdrugjo.medical&hl=en",
+      "appStore": "https://apps.apple.com/dz/app/dr-drugjo/id6754043714?l=en",
+      "githubUrl": ""
+    }
+  },
+  {
+    "title": "Invotek Company Management",
+    "subtitle": "إدارة الشركات",
+    "cardDescription": "نظام إدارة مؤسسي للمنتجات والعملاء والمصاريف وفواتير الضرائب مع تحكم دقيق في الصلاحيات.",
+    "fullDescription": "Invotek هو حل أعمال مؤسسي مصمم لإدارة العمليات الأساسية للشركة في مكان واحد. يغطي النظام المنتجات والعملاء والمصاريف وفواتير الضرائب مع دعم صلاحيات المستخدمين لمختلف أدوار الموظفين. تم تصميمه لتحسين تنظيم سير العمل الداخلي والتبع المالي.",
+    "technologies": [
+      "Flutter",
+      "BLoC",
+      "POS Printing",
+      "Permission System"
+    ],
+    "logo": "assets/images/logos/invotek_logo.png",
+    "screenshots": [],
+    "links": {
+      "googlePlay": "",
+      "appStore": "",
+      "githubUrl": ""
+    }
+  },
+  {
+    "title": "Halla App",
+    "subtitle": "التواصل الذكي",
+    "cardDescription": "تطبيق تواصل ذكي لمشاركة جهات الاتصال الرقمية عبر QR وNFC ووسوم الوظائف المولدة بالذكاء الاصطناعي.",
+    "fullDescription": "تطبيق Halla هو منصة تواصل ذكية مصممة لتحديث كيفية تبادل جهات الاتصال المهنية. يدعم التطبيق مشاركة جهات الاتصال عبر رموز QR وتقنية NFC، مع استخدام وسوم الوظائف المولدة بالذكاء الاصطناعي لإثراء اكتشاف الملفات الشخصية. يتضمن إمكانيات المزامنة في وضع عدم الاتصال ويدعم التخزين المحلي والسحابي.",
+    "technologies": [
+      "Flutter",
+      "Firebase",
+      "Hive",
+      "AI",
+      "NFC",
+      "BLoC",
+      "Clean Architecture"
+    ],
+    "logo": "assets/images/logos/halla_logo.png",
+    "screenshots": [],
+    "links": {
+      "googlePlay": "",
+      "appStore": "",
+      "githubUrl": ""
+    }
+  },
+  {
+    "title": "Wasla App",
+    "subtitle": "مشروع تخرج",
+    "cardDescription": "تطبيق توصيل ذكي يربط المستخدمين بالمسافرين لشحن المنتجات بين المدن مع تكامل الدردشة والدفع.",
+    "fullDescription": "Wasla هو منصة توصيل تعاونية تربط المستخدمين الذين يرغبون في شراء منتجات من مدن أخرى بالمسافرين الذين يمكنهم توصيلها. يتضمن التطبيق دردشة آمنة، وتكامل Paymob للمدفوعات الرقمية، ووظائف تعتمد على معالجة اللغات الطبيعية (NLP). يركز المشروع على حل تحديات التنسيق العملي للتوصيل.",
+    "technologies": [
+      "Flutter",
+      "Firebase",
+      "Hive",
+      "Paymob API",
+      "NLP",
+      "BLoC"
+    ],
+    "logo": "assets/images/logos/wasla_logo.png",
+    "screenshots": [],
+    "links": {
+      "googlePlay": "",
+      "appStore": "",
+      "githubUrl": ""
+    }
+  },
+  {
+    "title": "Taagira App",
+    "subtitle": "تطبيق تأجير سيارات",
+    "cardDescription": "منصة تأجير سيارات تتيح للمستخدمين استئجار أو عرض المركبات مع بحث يعتمد على الموقع.",
+    "fullDescription": "تطبيق Taagira هو منصة لتأجير السيارات تتيح للمستخدمين تصفح أو استئجار أو إدراج المركبات. يتضمن التطبيق بحثًا يعتمد على الموقع لمساعدة المستخدمين في اكتشاف السيارات القريبة ويستخدم مصادقة آمنة لدعم الوصول الموثوق إلى المنصة.",
+    "technologies": [
+      "Flutter",
+      "Firebase",
+      "Firestore",
+      "Hive",
+      "BLoC",
+      "Geolocation"
+    ],
+    "logo": "assets/images/logos/taagira_logo.png",
+    "screenshots": [],
+    "links": {
+      "googlePlay": "",
+      "appStore": "",
+      "githubUrl": ""
+    }
+  },
+  {
+    "title": "V-School App",
+    "subtitle": "إدارة التعليم",
+    "cardDescription": "منصة إدارة مدرسية تساعد المعلمين في إدارة الدروس والحضور والواجبات وسير العمل التعليمي.",
+    "fullDescription": "V-School هو منصة إدارة تعليمية مصممة لدعم المعلمين وسير العمل المدرسي. يتيح التطبيق إدارة الدروس وتتبع الحضور والتعامل مع الواجبات مع استخدام المزامنة في الوقت الفعلي لتحديث البيانات التعليمية. تم بناؤه لتبسيط العمليات الأكاديمية اليومية.",
+    "technologies": [
+      "Flutter",
+      "MVVM",
+      "RESTful APIs",
+      "Firebase"
+    ],
+    "logo": "assets/images/logos/v_school_logo.png",
+    "screenshots": [],
+    "links": {
+      "googlePlay": "",
+      "appStore": "",
+      "githubUrl": ""
+    }
+  }
+]

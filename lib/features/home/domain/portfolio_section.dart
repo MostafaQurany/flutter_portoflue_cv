@@ -1,10 +1,19 @@
+import '../../../core/localization/app_locale.dart';
+import '../../../core/localization/app_strings.dart';
+
 enum PortfolioSection {
-  home('Home'),
-  about('About'),
-  projects('Projects'),
-  contacts('Contacts');
+  home,
+  about,
+  projects,
+  contacts;
 
-  const PortfolioSection(this.label);
-
-  final String label;
+  String localizedLabel(AppLocale locale) {
+    final strings = AppStrings.of(locale);
+    return switch (this) {
+      home => strings.home,
+      about => strings.about,
+      projects => strings.projects,
+      contacts => strings.contact,
+    };
+  }
 }

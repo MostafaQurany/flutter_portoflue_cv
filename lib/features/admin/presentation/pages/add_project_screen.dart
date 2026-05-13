@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/localization/app_locale.dart';
+import '../../../../core/localization/app_strings.dart';
 import '../../../../core/responsive/responsive_builder.dart';
 import '../../../../core/routing/route_paths.dart';
 import '../../../../core/widgets/section_container.dart';
@@ -31,21 +33,22 @@ class _AddProjectScreenState extends ConsumerState<AddProjectScreen> {
   }
 
   void _submit() {
+    final strings = AppStrings.of(ref.read(localeProvider));
     if (_formKey.currentState!.validate()) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Project form validated. Persistence is deferred to a future backend phase.'),
+        SnackBar(
+          content: Text(strings.formValidated),
         ),
       );
     }
   }
 
-  String? _validateRepositoryUrl(String? value) {
+  String? _validateRepositoryUrl(String? value, AppStrings strings) {
     final text = value?.trim() ?? '';
     final uri = Uri.tryParse(text);
 
     if (text.isEmpty || uri == null || !uri.hasScheme || uri.host.isEmpty) {
-      return 'Enter a valid URL';
+      return strings.enterValidUrl;
     }
 
     return null;
@@ -69,7 +72,7 @@ class _AddProjectScreenState extends ConsumerState<AddProjectScreen> {
                 context.go(RoutePaths.adminLogin);
               },
               onSubmit: _submit,
-              validateRepositoryUrl: _validateRepositoryUrl,
+              validateRepositoryUrl: (v) => _validateRepositoryUrl(v, AppStrings.of(ref.watch(localeProvider))),
               isDesktop: false,
             ),
             tabletBuilder: (context) => _AddProjectContent(
@@ -82,7 +85,7 @@ class _AddProjectScreenState extends ConsumerState<AddProjectScreen> {
                 context.go(RoutePaths.adminLogin);
               },
               onSubmit: _submit,
-              validateRepositoryUrl: _validateRepositoryUrl,
+              validateRepositoryUrl: (v) => _validateRepositoryUrl(v, AppStrings.of(ref.watch(localeProvider))),
               isDesktop: false,
             ),
             desktopBuilder: (context) => _AddProjectContent(
@@ -95,7 +98,7 @@ class _AddProjectScreenState extends ConsumerState<AddProjectScreen> {
                 context.go(RoutePaths.adminLogin);
               },
               onSubmit: _submit,
-              validateRepositoryUrl: _validateRepositoryUrl,
+              validateRepositoryUrl: (v) => _validateRepositoryUrl(v, AppStrings.of(ref.watch(localeProvider))),
               isDesktop: true,
             ),
           ),
@@ -105,7 +108,7 @@ class _AddProjectScreenState extends ConsumerState<AddProjectScreen> {
   }
 }
 
-class _AddProjectContent extends StatelessWidget {
+class _AddProjectContent extends ConsumerWidget {
   const _AddProjectContent({
     required this.formKey,
     required this.titleController,
@@ -127,12 +130,15 @@ class _AddProjectContent extends StatelessWidget {
   final bool isDesktop;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final currentLocale = ref.watch(localeProvider);
+    final strings = AppStrings.of(currentLocale);
+
     final header = isDesktop
         ? Row(
             children: [
               Expanded(child: _HeaderBlock()),
-              TextButton(onPressed: onSignOut, child: const Text('Sign out')),
+              TextButton(onPressed: onSignOut, child: Text(strings.signOut)),
             ],
           )
         : Column(
@@ -141,10 +147,10 @@ class _AddProjectContent extends StatelessWidget {
               _HeaderBlock(),
               const SizedBox(height: 12),
               Align(
-                alignment: Alignment.centerLeft,
+                alignment: currentLocale == AppLocale.en ? Alignment.centerLeft : Alignment.centerRight,
                 child: TextButton(
                   onPressed: onSignOut,
-                  child: const Text('Sign out'),
+                  child: Text(strings.signOut),
                 ),
               ),
             ],
@@ -164,10 +170,10 @@ class _AddProjectContent extends StatelessWidget {
                 children: [
                   TextFormField(
                     controller: titleController,
-                    decoration: const InputDecoration(labelText: 'Project title'),
+                    decoration: InputDecoration(labelText: strings.projectTitle),
                     validator: (value) {
                       if (value == null || value.trim().isEmpty) {
-                        return 'Enter a title';
+                        return strings.enterTitle;
                       }
                       return null;
                     },
@@ -177,10 +183,10 @@ class _AddProjectContent extends StatelessWidget {
                     controller: descriptionController,
                     minLines: 4,
                     maxLines: 6,
-                    decoration: const InputDecoration(labelText: 'Description'),
+                    decoration: InputDecoration(labelText: strings.projectDescription),
                     validator: (value) {
                       if (value == null || value.trim().length < 20) {
-                        return 'Enter at least 20 characters';
+                        return strings.enterDescription;
                       }
                       return null;
                     },
@@ -188,7 +194,7 @@ class _AddProjectContent extends StatelessWidget {
                   const SizedBox(height: 16),
                   TextFormField(
                     controller: repositoryController,
-                    decoration: const InputDecoration(labelText: 'Repository URL'),
+                    decoration: InputDecoration(labelText: strings.repositoryUrl),
                     validator: validateRepositoryUrl,
                   ),
                   const SizedBox(height: 16),
@@ -200,16 +206,16 @@ class _AddProjectContent extends StatelessWidget {
                       border: Border.all(color: Theme.of(context).dividerColor),
                     ),
                     child: Text(
-                      'Thumbnail upload is intentionally deferred until storage and API contracts exist.',
+                      strings.thumbnailDeferred,
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
                   ),
                   const SizedBox(height: 24),
                   Align(
-                    alignment: Alignment.centerLeft,
+                    alignment: currentLocale == AppLocale.en ? Alignment.centerLeft : Alignment.centerRight,
                     child: ElevatedButton(
                       onPressed: onSubmit,
-                      child: const Text('Submit project'),
+                      child: Text(strings.submitProject),
                     ),
                   ),
                 ],
@@ -222,16 +228,17 @@ class _AddProjectContent extends StatelessWidget {
   }
 }
 
-class _HeaderBlock extends StatelessWidget {
+class _HeaderBlock extends ConsumerWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final strings = AppStrings.of(ref.watch(localeProvider));
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Add project', style: Theme.of(context).textTheme.headlineMedium),
+        Text(strings.addProject, style: Theme.of(context).textTheme.headlineMedium),
         const SizedBox(height: 12),
         Text(
-          'Frontend-only admin form with validation and route protection in place.',
+          strings.adminFormSubtitle,
           style: Theme.of(context).textTheme.bodyLarge,
         ),
       ],

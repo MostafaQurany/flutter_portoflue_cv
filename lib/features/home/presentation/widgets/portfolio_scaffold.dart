@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/localization/app_locale.dart';
+import '../../../../core/localization/app_strings.dart';
 import '../../../../core/responsive/responsive_breakpoints.dart';
 import '../../../../core/routing/route_paths.dart';
 import '../../../../core/theme/app_colors.dart';
@@ -63,7 +65,7 @@ class PortfolioScaffold extends ConsumerWidget {
   }
 }
 
-class _TopNavigation extends StatelessWidget {
+class _TopNavigation extends ConsumerWidget {
   const _TopNavigation({
     required this.isDesktop,
     required this.currentSection,
@@ -75,7 +77,9 @@ class _TopNavigation extends StatelessWidget {
   final ValueChanged<PortfolioSection> onSectionSelected;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final currentLocale = ref.watch(localeProvider);
+
     return Row(
       children: [
         const _BrandMark(),
@@ -83,35 +87,65 @@ class _TopNavigation extends StatelessWidget {
         if (isDesktop)
           Wrap(
             spacing: 20,
-            children: PortfolioSection.values
-                .map(
-                  (section) => TextButton(
-                    onPressed: () => onSectionSelected(section),
-                    child: Text(
-                      section.label,
-                      style: TextStyle(
-                        color: section == currentSection
-                            ? AppColors.textPrimary
-                            : AppColors.textMuted,
-                        fontWeight: section == currentSection
-                            ? FontWeight.w700
-                            : FontWeight.w500,
-                      ),
+            crossAxisAlignment: WrapCrossAlignment.center,
+            children: [
+              ...PortfolioSection.values.map(
+                (section) => TextButton(
+                  onPressed: () => onSectionSelected(section),
+                  child: Text(
+                    section.localizedLabel(currentLocale),
+                    style: TextStyle(
+                      color: section == currentSection
+                          ? AppColors.textPrimary
+                          : AppColors.textMuted,
+                      fontWeight: section == currentSection
+                          ? FontWeight.w700
+                          : FontWeight.w500,
                     ),
                   ),
-                )
-                .toList(),
+                ),
+              ),
+              _LanguageToggle(),
+            ],
           )
         else
-          Builder(
-            builder: (context) {
-              return IconButton(
-                onPressed: () => Scaffold.of(context).openEndDrawer(),
-                icon: const Icon(Icons.menu_rounded),
-              );
-            },
+          Row(
+            children: [
+              _LanguageToggle(),
+              Builder(
+                builder: (context) {
+                  return IconButton(
+                    onPressed: () => Scaffold.of(context).openEndDrawer(),
+                    icon: const Icon(Icons.menu_rounded),
+                  );
+                },
+              ),
+            ],
           ),
       ],
+    );
+  }
+}
+
+class _LanguageToggle extends ConsumerWidget {
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final currentLocale = ref.watch(localeProvider);
+
+    return TextButton.icon(
+      onPressed: () {
+        ref.read(localeProvider.notifier).state =
+            currentLocale == AppLocale.en ? AppLocale.ar : AppLocale.en;
+      },
+      icon: const Icon(Icons.language, size: 18),
+      label: Text(
+        currentLocale == AppLocale.en ? 'AR' : 'EN',
+        style: const TextStyle(fontWeight: FontWeight.bold),
+      ),
+      style: TextButton.styleFrom(
+        foregroundColor: AppColors.primary,
+        padding: const EdgeInsets.symmetric(horizontal: 12),
+      ),
     );
   }
 }
@@ -141,13 +175,16 @@ class _BrandMark extends StatelessWidget {
   }
 }
 
-class _PortfolioDrawer extends StatelessWidget {
+class _PortfolioDrawer extends ConsumerWidget {
   const _PortfolioDrawer({required this.onSectionSelected});
 
   final ValueChanged<PortfolioSection> onSectionSelected;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final currentLocale = ref.watch(localeProvider);
+    final strings = AppStrings.of(currentLocale);
+
     return Drawer(
       backgroundColor: AppColors.surface,
       child: SafeArea(
@@ -163,7 +200,7 @@ class _PortfolioDrawer extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 8),
                   child: ListTile(
                     contentPadding: EdgeInsets.zero,
-                    title: Text(section.label),
+                    title: Text(section.localizedLabel(currentLocale)),
                     onTap: () {
                       Navigator.of(context).pop();
                       onSectionSelected(section);
@@ -174,7 +211,7 @@ class _PortfolioDrawer extends StatelessWidget {
               const Spacer(),
               OutlinedButton(
                 onPressed: () => context.go(RoutePaths.adminLogin),
-                child: const Text('Admin access'),
+                child: Text(strings.adminAccess),
               ),
             ],
           ),

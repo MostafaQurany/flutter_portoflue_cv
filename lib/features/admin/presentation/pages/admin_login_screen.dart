@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/localization/app_locale.dart';
+import '../../../../core/localization/app_strings.dart';
 import '../../../../core/responsive/responsive_builder.dart';
 import '../../../../core/routing/route_paths.dart';
 import '../../../../core/widgets/section_container.dart';
@@ -75,7 +77,7 @@ class _AdminLoginScreenState extends ConsumerState<AdminLoginScreen> {
   }
 }
 
-class _AdminLoginCard extends StatelessWidget {
+class _AdminLoginCard extends ConsumerWidget {
   const _AdminLoginCard({
     required this.formKey,
     required this.usernameController,
@@ -89,7 +91,10 @@ class _AdminLoginCard extends StatelessWidget {
   final VoidCallback onSubmit;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final currentLocale = ref.watch(localeProvider);
+    final strings = AppStrings.of(currentLocale);
+
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(28),
@@ -98,19 +103,19 @@ class _AdminLoginCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Admin login', style: Theme.of(context).textTheme.headlineMedium),
+              Text(strings.adminLogin, style: Theme.of(context).textTheme.headlineMedium),
               const SizedBox(height: 12),
               Text(
-                'This is a guarded frontend-only admin entry point prepared for future backend integration.',
+                strings.adminSubtitle,
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
               const SizedBox(height: 24),
               TextFormField(
                 controller: usernameController,
-                decoration: const InputDecoration(labelText: 'Username'),
+                decoration: InputDecoration(labelText: strings.username),
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
-                    return 'Enter your username';
+                    return strings.enterUsername;
                   }
                   return null;
                 },
@@ -119,10 +124,10 @@ class _AdminLoginCard extends StatelessWidget {
               TextFormField(
                 controller: passwordController,
                 obscureText: true,
-                decoration: const InputDecoration(labelText: 'Password'),
+                decoration: InputDecoration(labelText: strings.password),
                 validator: (value) {
                   if (value == null || value.trim().length < 4) {
-                    return 'Enter at least 4 characters';
+                    return strings.enterPassword;
                   }
                   return null;
                 },
@@ -132,7 +137,7 @@ class _AdminLoginCard extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: onSubmit,
-                  child: const Text('Enter admin area'),
+                  child: Text(strings.enterAdminArea),
                 ),
               ),
             ],

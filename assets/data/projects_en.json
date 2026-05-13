@@ -10,11 +10,7 @@
       "Role-Based Systems"
     ],
     "logo": "assets/images/logos/cater_station_logo.png",
-    "screenshots": [
-      "https://picsum.photos/seed/0_0/800/600",
-      "https://picsum.photos/seed/0_1/800/600",
-      "https://picsum.photos/seed/0_2/800/600"
-    ],
+    "screenshots": [],
     "links": {
       "googlePlay": "",
       "appStore": "",
@@ -22,25 +18,29 @@
     }
   },
   {
-    "title": "Parking Management System",
+    "title": "Barkin Al-Wafi",
     "subtitle": "Smart Parking Solution",
-    "cardDescription": "A smart parking app with POS and Sunmi printer integration, invoice generation, and QR-based vehicle tracking.",
-    "fullDescription": "Parking Management System is a smart parking solution built to simplify parking operations through digital tracking and automated invoicing. The application supports POS workflows and Sunmi printer integration for fast invoice generation, while QR-based vehicle tracking helps manage entries and exits more efficiently. It was designed to improve operational accuracy, reduce manual work, and provide a reliable workflow for parking businesses.",
+    "cardDescription": "Barkin Al-Wafi is the ideal solution for managing parking lots with ease and efficiency, specifically designed for guards to manage shifts and invoices.",
+    "fullDescription": "Barkin Al-Wafi is an integrated parking management system designed to facilitate daily operations for guards and supervisors. The app features daily shift management, tracking initial and final balances, and rapid creation of parking invoices. It supports two pricing models: fixed and hourly, with QR code scanning for quick invoice completion. It also enables direct invoice printing via portable POS printers and provides real-time statistics for sales and active vehicles, all within a modern and easy-to-use user interface.",
     "technologies": [
       "Flutter",
-      "BLoC",
-      "Bluetooth Printing",
-      "QR Code",
-      "Local DB"
+      "QR Code Scanning",
+      "Bluetooth POS Printing",
+      "Real-time Statistics",
+      "Shift Management",
+      "Dynamic Pricing"
     ],
     "logo": "assets/images/logos/parking_management_logo.png",
     "screenshots": [
-      "https://picsum.photos/seed/1_0/800/600",
-      "https://picsum.photos/seed/1_1/800/600",
-      "https://picsum.photos/seed/1_2/800/600"
+      "https://play-lh.googleusercontent.com/Hy2bZYB4id_axBlpunmZY8FGMXsBvIDegUJw-Y7SFvr79h_hs1V9UBC2QBaLNT4Sj1m4UnL29JmQmA81aTie02M=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/s3DhQi4IRNCBxWu2NTGAjM7kulptEUly9ZB6oUkyqnCcpxTCt3k2ZFxWF4zaPIIlhkaNk6C4HdO8Ld0UflE4EQ=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/PfDTsZOFSQytljFETu-XzKaLNcIGtdNJ9oG07F-SOyCOXtGFHHEQl_3LM2LbzAtXh3PT3y17iAOB_Fcs1bBQ=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/Bwi_2Oy6iav4DN1xNQHMLxBpWVl-8fJ9gAW6wkIpgwnvo1pNXQAJodabGp7tlGBjJxgfheu5whKYB7i_M0c3gg=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/emS0cHTv313nlkq0jmGMVm5n2C0ho-BiCh1-RLSvCHY4b56UOe5FLmIEbXXP7WjCtqPocOT6VN3febTHntMWnw=w1052-h592-rw",
+      "https://play-lh.googleusercontent.com/6wJv83gYf7fzE-u0bJNRcjggaDVIiMEVLnUpg4gf9f8WRr7zQJHV-bl_NDT8W7lF6hM4gb1n6kJsYdkn6dtGpsk=w1052-h592-rw"
     ],
     "links": {
-      "googlePlay": "",
+      "googlePlay": "https://play.google.com/store/apps/details?id=com.teckpart.parkingtec",
       "appStore": "",
       "githubUrl": ""
     }
@@ -57,11 +57,7 @@
       "Invoice System"
     ],
     "logo": "assets/images/logos/wafy_restaurant_pos_logo.png",
-    "screenshots": [
-      "https://picsum.photos/seed/2_0/800/600",
-      "https://picsum.photos/seed/2_1/800/600",
-      "https://picsum.photos/seed/2_2/800/600"
-    ],
+    "screenshots": [],
     "links": {
       "googlePlay": "",
       "appStore": "",
@@ -83,18 +79,19 @@
     ],
     "logo": "assets/images/dr_drug/drdrugjo_logo.png",
     "screenshots": [
-      "assets/images/dr_drug/unnam22ed.png",
-      "assets/images/dr_drug/unname1d.png",
-      "assets/images/dr_drug/unname11d.png",
-      "assets/images/dr_drug/unnamed.png",
-      "assets/images/dr_drug/unnamed2.png",
-      "assets/images/dr_drug/unnamed4.png",
-      "assets/images/dr_drug/unnamed5.png",
-      "assets/images/dr_drug/unnamed6.png"
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/89/56/75/895675d9-d3bb-be23-76d9-aceefa0504f2/Simulator_Screenshot_-_iPhone_17_Pro_Max_-_2025-10-15_at_22.26.25.png/460x998bb.webp",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/25/43/c6/2543c6e1-a571-6bec-7f73-1f4100b17993/Simulator_Screenshot_-_iPhone_17_Pro_Max_-_2025-10-15_at_22.26.58.png/460x998bb.webp",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/c6/38/33/c63833b0-5492-a352-780b-66040eea5d6a/Simulator_Screenshot_-_iPhone_17_Pro_Max_-_2025-10-15_at_22.27.21.png/460x998bb.webp",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/3a/0b/0f/3a0b0f4d-7538-a8ed-1b03-d2f10ee7d0ae/Simulator_Screenshot_-_iPhone_17_Pro_Max_-_2025-10-15_at_22.26.38.png/460x998bb.webp",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/cc/01/40/cc0140aa-28b9-24ea-84ce-d39b4679db21/Simulator_Screenshot_-_iPhone_17_Pro_Max_-_2025-10-15_at_22.27.26.png/460x998bb.webp",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/05/fb/8d/05fb8d6b-18be-4f0e-ca81-4709b06414ed/Simulator_Screenshot_-_iPhone_17_Pro_Max_-_2025-10-15_at_22.27.15.png/460x998bb.webp",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/e3/42/6c/e3426c1a-c1d3-cbb2-9256-d932c0749087/Simulator_Screenshot_-_iPhone_17_Pro_Max_-_2025-10-15_at_22.26.29.png/300x650bb.webp",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/a4/74/0d/a4740d80-b1cf-dd63-5c3a-23314366d493/Simulator_Screenshot_-_iPhone_17_Pro_Max_-_2025-10-15_at_22.27.05.png/300x650bb.webp",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/90/54/82/90548293-bbd6-6cdb-ae0d-314c3cc7fe5d/Simulator_Screenshot_-_iPhone_17_Pro_Max_-_2025-10-15_at_22.26.34.png/300x650bb.webp"
     ],
     "links": {
       "googlePlay": "https://play.google.com/store/apps/details?id=com.drdrugjo.medical&hl=en",
-      "appStore": "",
+      "appStore": "https://apps.apple.com/dz/app/dr-drugjo/id6754043714?l=en",
       "githubUrl": ""
     }
   },
@@ -110,11 +107,7 @@
       "Permission System"
     ],
     "logo": "assets/images/logos/invotek_logo.png",
-    "screenshots": [
-      "https://picsum.photos/seed/4_0/800/600",
-      "https://picsum.photos/seed/4_1/800/600",
-      "https://picsum.photos/seed/4_2/800/600"
-    ],
+    "screenshots": [],
     "links": {
       "googlePlay": "",
       "appStore": "",
@@ -136,11 +129,7 @@
       "Clean Architecture"
     ],
     "logo": "assets/images/logos/halla_logo.png",
-    "screenshots": [
-      "https://picsum.photos/seed/5_0/800/600",
-      "https://picsum.photos/seed/5_1/800/600",
-      "https://picsum.photos/seed/5_2/800/600"
-    ],
+    "screenshots": [],
     "links": {
       "googlePlay": "",
       "appStore": "",
@@ -161,11 +150,7 @@
       "BLoC"
     ],
     "logo": "assets/images/logos/wasla_logo.png",
-    "screenshots": [
-      "https://picsum.photos/seed/6_0/800/600",
-      "https://picsum.photos/seed/6_1/800/600",
-      "https://picsum.photos/seed/6_2/800/600"
-    ],
+    "screenshots": [],
     "links": {
       "googlePlay": "",
       "appStore": "",
@@ -187,10 +172,7 @@
     ],
     "logo": "assets/images/logos/taagira_logo.png",
     "screenshots": [
-      "https://picsum.photos/seed/7_0/800/600",
-      "https://picsum.photos/seed/7_1/800/600",
-      "https://picsum.photos/seed/7_2/800/600"
-    ],
+         ],
     "links": {
       "googlePlay": "",
       "appStore": "",
@@ -209,11 +191,7 @@
       "Firebase"
     ],
     "logo": "assets/images/logos/v_school_logo.png",
-    "screenshots": [
-      "https://picsum.photos/seed/8_0/800/600",
-      "https://picsum.photos/seed/8_1/800/600",
-      "https://picsum.photos/seed/8_2/800/600"
-    ],
+    "screenshots": [],
     "links": {
       "googlePlay": "",
       "appStore": "",

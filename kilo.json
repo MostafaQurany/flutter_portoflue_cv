@@ -4,5 +4,20 @@
     "preferred_commands": [
         "analyze",
         "run-web"
-    ]
+    ],
+    "agent": {
+        "name": "Senior-Architect",
+        "rules": [
+            "./.kilo/rules/project-rules.md"
+        ],
+        "skills": [
+            "./.kilo/skills/feature-generator.md",
+            "./.kilo/skills/widget-splitter.md",
+            "./.kilo/skills/wasm-auditor.md"
+        ]
+    },
+    "lints": {
+        "strict": true,
+        "dart_macros": "enabled"
+    }
 }
