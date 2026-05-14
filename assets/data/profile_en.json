@@ -44,7 +44,9 @@
     "RESTful APIs",
     "Freezed",
     "json_serializable",
-    "Retrofit"
+    "Retrofit",
+    "Odoo"
+    
   ],
   "services": [
     {
