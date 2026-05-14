@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Cyan gradient for the M -->
+    <linearGradient id="gradM" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#0284C7" />
+    </linearGradient>
+    
+    <!-- Deep Cyan gradient for the Q -->
+    <linearGradient id="gradQ" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0EA5E9" />
+      <stop offset="100%" stop-color="#0369A1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Dark Theme Background Surface -->
+  <rect x="16" y="16" width="480" height="480" rx="112" fill="#0B1220" stroke="#1E293B" stroke-width="8"/>
+
+  <!-- Monogram Group -->
+  <g stroke-width="40" fill="none" stroke-linejoin="miter" stroke-miterlimit="10">
+    
+    <!-- Letter M -->
+    <path d="M 120 350 V 170 L 200 255 L 280 170 V 350" stroke="url(#gradM)" stroke-linecap="square" />
+    
+    <!-- Letter Q (Angular Tech Geometry) -->
+    <path d="M 280 220 
+             L 330 170 
+             H 390 
+             L 440 220 
+             V 300 
+             L 390 350 
+             H 330 
+             L 280 300" 
+          stroke="url(#gradQ)" stroke-linecap="square" />
+          
+    <!-- Q Tail -->
+    <path d="M 360 320 L 430 390" stroke="#38BDF8" stroke-linecap="round" />
+    
+  </g>
+</svg>
