@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../theme/app_colors.dart';
+import '../../theme/app_theme.dart';
 
 class ImageFallback extends StatelessWidget {
   const ImageFallback({
@@ -16,17 +16,19 @@ class ImageFallback extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final palette = context.palette;
+
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: palette.surface,
         borderRadius: BorderRadius.circular(borderRadius),
-        border: Border.all(color: AppColors.border),
+        border: Border.all(color: palette.border),
       ),
       alignment: Alignment.center,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, color: AppColors.textMuted, size: 30),
+          Icon(icon, color: palette.textMuted, size: 30),
           const SizedBox(height: 8),
           Text(
             label,
@@ -35,7 +37,7 @@ class ImageFallback extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             style: Theme.of(
               context,
-            ).textTheme.bodySmall?.copyWith(color: AppColors.textMuted),
+            ).textTheme.bodySmall?.copyWith(color: palette.textMuted),
           ),
         ],
       ),

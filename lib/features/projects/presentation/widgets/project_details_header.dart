@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/app_theme.dart';
 import '../../domain/project.dart';
 import 'project_image.dart';
 
@@ -12,18 +13,19 @@ class ProjectDetailsHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final palette = context.palette;
 
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: palette.surface,
         borderRadius: BorderRadius.circular(32),
-        border: Border.all(color: AppColors.border),
-        gradient: const LinearGradient(
+        border: Border.all(color: palette.border),
+        gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [AppColors.surface, AppColors.surfaceMuted],
+          colors: [palette.surface, palette.surfaceMuted],
         ),
       ),
       child: Wrap(
@@ -36,9 +38,9 @@ class ProjectDetailsHeader extends StatelessWidget {
             height: 160,
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
-              color: AppColors.background,
+              color: palette.background,
               borderRadius: BorderRadius.circular(28),
-              border: Border.all(color: AppColors.border),
+              border: Border.all(color: palette.border),
             ),
             child: ProjectImage(imagePath: project.logo, fit: BoxFit.contain),
           ),
@@ -59,14 +61,14 @@ class ProjectDetailsHeader extends StatelessWidget {
                   project.title,
                   style: theme.textTheme.displaySmall?.copyWith(
                     fontWeight: FontWeight.w800,
-                    color: AppColors.textPrimary,
+                    color: palette.textPrimary,
                   ),
                 ),
                 const SizedBox(height: 14),
                 Text(
                   project.cardDescription,
                   style: theme.textTheme.bodyLarge?.copyWith(
-                    color: AppColors.textMuted,
+                    color: palette.textMuted,
                   ),
                 ),
               ],

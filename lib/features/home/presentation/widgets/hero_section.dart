@@ -5,6 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../core/localization/app_locale.dart';
 import '../../../../core/localization/app_strings.dart';
+import '../../../../core/theme/app_theme.dart';
 import '../providers/content_providers.dart';
 
 class HeroSection extends ConsumerWidget {
@@ -21,6 +22,7 @@ class HeroSection extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final primaryColor = theme.colorScheme.primary;
+    final palette = context.palette;
     final profileContentAsync = ref.watch(profileContentProvider);
     final currentLocale = ref.watch(localeProvider);
     final strings = AppStrings.of(currentLocale);
@@ -89,7 +91,7 @@ class HeroSection extends ConsumerWidget {
                     content.role,
                     style: theme.textTheme.headlineSmall?.copyWith(
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      color: palette.textPrimary,
                     ),
                   )
                   .animate(delay: 400.ms)
@@ -111,8 +113,8 @@ class HeroSection extends ConsumerWidget {
                   OutlinedButton(
                     onPressed: _launchResume,
                     style: OutlinedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      side: const BorderSide(color: Colors.white24),
+                      foregroundColor: palette.textPrimary,
+                      side: BorderSide(color: palette.border),
                     ),
                     child: Text(content.secondaryCtaLabel),
                   ),
@@ -137,7 +139,7 @@ class HeroSection extends ConsumerWidget {
                       border: Border.all(color: primaryColor, width: 2),
                       boxShadow: [
                         BoxShadow(
-                          color: primaryColor.withOpacity(0.15),
+                          color: palette.heroGlow,
                           blurRadius: 50,
                           spreadRadius: 10,
                         ),
@@ -151,7 +153,7 @@ class HeroSection extends ConsumerWidget {
                     height: 200,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: primaryColor.withOpacity(0.2),
+                      color: primaryColor.withValues(alpha: 0.14),
                     ),
                   ).animate(delay: 900.ms).fadeIn(duration: 800.ms).scale(),
                   
@@ -160,13 +162,13 @@ class HeroSection extends ConsumerWidget {
                     left: currentLocale == AppLocale.en ? 0 : null,
                     right: currentLocale == AppLocale.ar ? 0 : null,
                     top: 80,
-                    child: Text(currentLocale == AppLocale.en ? '<' : '>', style: TextStyle(color: primaryColor.withOpacity(0.5), fontSize: 40, fontWeight: FontWeight.w300)),
+                    child: Text(currentLocale == AppLocale.en ? '<' : '>', style: TextStyle(color: primaryColor.withValues(alpha: 0.5), fontSize: 40, fontWeight: FontWeight.w300)),
                   ),
                   Positioned(
                     right: currentLocale == AppLocale.en ? 0 : null,
                     left: currentLocale == AppLocale.ar ? 0 : null,
                     bottom: 60,
-                    child: Text(currentLocale == AppLocale.en ? '>' : '<', style: TextStyle(color: primaryColor.withOpacity(0.5), fontSize: 40, fontWeight: FontWeight.w300)),
+                    child: Text(currentLocale == AppLocale.en ? '>' : '<', style: TextStyle(color: primaryColor.withValues(alpha: 0.5), fontSize: 40, fontWeight: FontWeight.w300)),
                   ),
 
                   // User portrait (background-removed image)

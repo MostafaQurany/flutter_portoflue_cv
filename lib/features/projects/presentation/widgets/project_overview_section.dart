@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/app_theme.dart';
 
 class ProjectOverviewSection extends StatelessWidget {
   const ProjectOverviewSection({super.key, required this.description});
@@ -10,6 +10,7 @@ class ProjectOverviewSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final palette = context.palette;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -24,7 +25,7 @@ class ProjectOverviewSection extends StatelessWidget {
         Text(
           description,
           style: theme.textTheme.bodyLarge?.copyWith(
-            color: AppColors.textMuted,
+            color: palette.textMuted,
             height: 1.8,
           ),
         ),

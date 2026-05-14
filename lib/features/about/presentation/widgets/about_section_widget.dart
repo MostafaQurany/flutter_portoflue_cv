@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/responsive/responsive_builder.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/app_theme.dart';
 import '../../../../core/widgets/animated_reveal.dart';
 import '../../../home/domain/profile_content.dart';
 import '../../../home/presentation/providers/content_providers.dart';
@@ -40,6 +41,8 @@ class _AboutLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final palette = context.palette;
+
     final services = Column(
       children: [
         for (var index = 0; index < content.services.length; index++)
@@ -66,7 +69,7 @@ class _AboutLayout extends StatelessWidget {
           content.aboutSummary,
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
             height: 1.8,
-            color: AppColors.textMuted,
+            color: palette.textMuted,
           ),
         ),
         const SizedBox(height: 40),
@@ -107,6 +110,8 @@ class _ServiceTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final palette = context.palette;
+
     return IntrinsicHeight(
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -118,8 +123,8 @@ class _ServiceTile extends StatelessWidget {
                 margin: const EdgeInsets.only(top: 8),
                 width: 10,
                 height: 10,
-                decoration: const BoxDecoration(
-                  color: AppColors.primary,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.primary,
                   shape: BoxShape.circle,
                 ),
               ),
@@ -135,7 +140,7 @@ class _ServiceTile extends StatelessWidget {
           ),
           const SizedBox(width: 24),
           // Icon
-          Icon(icon, color: AppColors.textPrimary, size: 28),
+          Icon(icon, color: palette.textPrimary, size: 28),
           const SizedBox(width: 16),
           // Texts
           Expanded(
@@ -212,7 +217,7 @@ class _StatCard extends StatelessWidget {
           text: TextSpan(
             style: Theme.of(context).textTheme.displaySmall?.copyWith(
               fontWeight: FontWeight.w800,
-              color: AppColors.textPrimary,
+              color: context.palette.textPrimary,
             ),
             children: [
               TextSpan(
@@ -221,7 +226,7 @@ class _StatCard extends StatelessWidget {
               if (hasSymbol)
                 TextSpan(
                   text: value.substring(symbolIndex),
-                  style: const TextStyle(color: AppColors.primary),
+                  style: TextStyle(color: Theme.of(context).colorScheme.primary),
                 ),
             ],
           ),
@@ -232,7 +237,7 @@ class _StatCard extends StatelessWidget {
           child: Text(
             label, 
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: AppColors.textMuted,
+              color: context.palette.textMuted,
             ),
           ),
         ),

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../theme/app_colors.dart';
-
 class SectionHeading extends StatelessWidget {
   const SectionHeading({super.key, required this.title, this.trailing});
 
@@ -16,7 +14,7 @@ class SectionHeading extends StatelessWidget {
           width: 4,
           height: 20,
           decoration: BoxDecoration(
-            color: AppColors.primary,
+            color: Theme.of(context).colorScheme.primary,
             borderRadius: BorderRadius.circular(4),
           ),
         ),

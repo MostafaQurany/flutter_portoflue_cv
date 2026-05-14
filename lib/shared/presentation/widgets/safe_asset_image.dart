@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../../core/design_system/atoms/image_fallback.dart';
-import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_theme.dart';
 
 /// Displays an image from either a local asset path or a
 /// network URL. Falls back to [ImageFallback] on error.
@@ -69,12 +69,14 @@ class _SafeAssetImageState extends State<SafeAssetImage> {
   }
 
   Widget _buildShimmer(BuildContext context) {
+    final palette = context.palette;
+
     return Shimmer.fromColors(
-      baseColor: AppColors.surface.withValues(alpha: 0.5),
-      highlightColor: AppColors.border.withValues(alpha: 0.3),
+      baseColor: palette.surface.withValues(alpha: 0.6),
+      highlightColor: palette.border.withValues(alpha: 0.35),
       child: Container(
         decoration: BoxDecoration(
-          color: AppColors.surface,
+          color: palette.surface,
           borderRadius: BorderRadius.circular(12),
         ),
       ),

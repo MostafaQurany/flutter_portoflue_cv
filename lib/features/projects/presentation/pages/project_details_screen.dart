@@ -7,7 +7,7 @@ import '../../../../core/localization/app_strings.dart';
 import '../../../../core/responsive/responsive_builder.dart';
 import '../../../../core/design_system/molecules/project_info_card.dart';
 import '../../../../core/design_system/molecules/project_link_button.dart';
-import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/app_theme.dart';
 import '../../domain/project.dart';
 import '../providers/projects_provider.dart';
 import '../widgets/project_details_header.dart';
@@ -25,16 +25,17 @@ class ProjectDetailsScreen extends ConsumerWidget {
     final projectsAsync = ref.watch(projectsProvider);
     final currentLocale = ref.watch(localeProvider);
     final strings = AppStrings.of(currentLocale);
+    final palette = context.palette;
 
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: palette.background,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(
+          icon: Icon(
             Icons.arrow_back_rounded,
-            color: AppColors.textPrimary,
+            color: palette.textPrimary,
           ),
           onPressed: () => context.pop(),
         ),
@@ -46,7 +47,7 @@ class ProjectDetailsScreen extends ConsumerWidget {
             return Center(
               child: Text(
                 strings.projectNotFound,
-                style: const TextStyle(color: AppColors.textPrimary),
+                style: TextStyle(color: palette.textPrimary),
               ),
             );
           }
@@ -57,7 +58,7 @@ class ProjectDetailsScreen extends ConsumerWidget {
         error: (error, _) => Center(
           child: Text(
             strings.errorLoadingDetails,
-            style: const TextStyle(color: AppColors.textPrimary),
+            style: TextStyle(color: palette.textPrimary),
           ),
         ),
       ),

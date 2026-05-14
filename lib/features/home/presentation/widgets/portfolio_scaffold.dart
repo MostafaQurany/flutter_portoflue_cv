@@ -6,8 +6,10 @@ import '../../../../core/localization/app_locale.dart';
 import '../../../../core/localization/app_strings.dart';
 import '../../../../core/responsive/responsive_breakpoints.dart';
 import '../../../../core/routing/route_paths.dart';
-import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/theme_mode_provider.dart';
+import '../../../../core/theme/app_theme.dart';
 import '../../../../core/widgets/section_container.dart';
+import '../../../../core/widgets/brand_mark.dart';
 import '../../domain/portfolio_section.dart';
 import '../providers/portfolio_scroll_provider.dart';
 
@@ -24,6 +26,7 @@ class PortfolioScaffold extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final scrollController = ref.watch(portfolioScrollControllerProvider);
+    final palette = context.palette;
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -36,11 +39,11 @@ class PortfolioScaffold extends ConsumerWidget {
                   onSectionSelected: (section) => scrollController.scrollTo(section),
                 ),
           body: Container(
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
-                colors: [Color(0xFF1E232B), Color(0xFF171C23)],
+                colors: [palette.pageGradientStart, palette.pageGradientEnd],
               ),
             ),
             child: SafeArea(
@@ -82,7 +85,7 @@ class _TopNavigation extends ConsumerWidget {
 
     return Row(
       children: [
-        const _BrandMark(),
+        const BrandMark(compact: true),
         const Spacer(),
         if (isDesktop)
           Wrap(
@@ -96,8 +99,8 @@ class _TopNavigation extends ConsumerWidget {
                     section.localizedLabel(currentLocale),
                     style: TextStyle(
                       color: section == currentSection
-                          ? AppColors.textPrimary
-                          : AppColors.textMuted,
+                          ? Theme.of(context).colorScheme.primary
+                          : context.palette.textMuted,
                       fontWeight: section == currentSection
                           ? FontWeight.w700
                           : FontWeight.w500,
@@ -105,12 +108,14 @@ class _TopNavigation extends ConsumerWidget {
                   ),
                 ),
               ),
+              const _ThemeToggle(),
               _LanguageToggle(),
             ],
           )
         else
           Row(
             children: [
+              const _ThemeToggle(compact: true),
               _LanguageToggle(),
               Builder(
                 builder: (context) {
@@ -128,6 +133,8 @@ class _TopNavigation extends ConsumerWidget {
 }
 
 class _LanguageToggle extends ConsumerWidget {
+  const _LanguageToggle();
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentLocale = ref.watch(localeProvider);
@@ -143,35 +150,47 @@ class _LanguageToggle extends ConsumerWidget {
         style: const TextStyle(fontWeight: FontWeight.bold),
       ),
       style: TextButton.styleFrom(
-        foregroundColor: AppColors.primary,
+        foregroundColor: Theme.of(context).colorScheme.primary,
         padding: const EdgeInsets.symmetric(horizontal: 12),
       ),
     );
   }
 }
 
-class _BrandMark extends StatelessWidget {
-  const _BrandMark();
+class _ThemeToggle extends ConsumerWidget {
+  const _ThemeToggle({this.compact = false});
+
+  final bool compact;
 
   @override
-  Widget build(BuildContext context) {
-    final style = Theme.of(context).textTheme.titleLarge?.copyWith(
-          fontWeight: FontWeight.w700,
-          color: AppColors.textPrimary,
-        );
+  Widget build(BuildContext context, WidgetRef ref) {
+    final mode = ref.watch(themeModeProvider);
+    final isDark = mode == ThemeMode.dark;
+    final palette = context.palette;
 
-    return RichText(
-      text: TextSpan(
-        style: style,
-        children: const [
-          TextSpan(text: 'Mostafa'),
-          TextSpan(
-            text: '.',
-            style: TextStyle(color: AppColors.primary),
-          ),
-        ],
-      ),
-    );
+    return compact
+        ? IconButton.outlined(
+            onPressed: () => ref.read(themeModeProvider.notifier).state =
+                isDark ? ThemeMode.light : ThemeMode.dark,
+            icon: Icon(isDark ? Icons.light_mode_rounded : Icons.dark_mode_rounded),
+            style: IconButton.styleFrom(
+              foregroundColor: Theme.of(context).colorScheme.primary,
+              side: BorderSide(color: palette.border),
+            ),
+          )
+        : TextButton.icon(
+            onPressed: () => ref.read(themeModeProvider.notifier).state =
+                isDark ? ThemeMode.light : ThemeMode.dark,
+            icon: Icon(isDark ? Icons.light_mode_rounded : Icons.dark_mode_rounded),
+            label: Text(
+              isDark ? 'Light' : 'Dark',
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
+            style: TextButton.styleFrom(
+              foregroundColor: Theme.of(context).colorScheme.primary,
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+            ),
+          );
   }
 }
 
@@ -186,15 +205,20 @@ class _PortfolioDrawer extends ConsumerWidget {
     final strings = AppStrings.of(currentLocale);
 
     return Drawer(
-      backgroundColor: AppColors.surface,
+      backgroundColor: context.palette.surface,
       child: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const _BrandMark(),
+              const BrandMark(compact: true),
               const SizedBox(height: 24),
+              const Align(
+                alignment: AlignmentDirectional.centerStart,
+                child: _ThemeToggle(),
+              ),
+              const SizedBox(height: 16),
               ...PortfolioSection.values.map(
                 (section) => Padding(
                   padding: const EdgeInsets.only(bottom: 8),

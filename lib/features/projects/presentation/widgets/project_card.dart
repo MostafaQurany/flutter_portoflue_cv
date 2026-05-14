@@ -6,7 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../../core/design_system/atoms/project_chip.dart';
 import '../../../../core/localization/app_locale.dart';
 import '../../../../core/localization/app_strings.dart';
-import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/app_theme.dart';
 import '../../domain/project.dart';
 import 'project_card_hero.dart';
 
@@ -27,6 +27,7 @@ class ProjectCard extends ConsumerWidget {
     final technologyPreviewCount = crossAxisCount == 1 ? 3 : 2;
     final currentLocale = ref.watch(localeProvider);
     final strings = AppStrings.of(currentLocale);
+    final palette = context.palette;
 
     return Card(
       clipBehavior: Clip.antiAlias,
@@ -78,7 +79,7 @@ class ProjectCard extends ConsumerWidget {
                     '+${project.technologies.length - technologyPreviewCount} ${strings.moreTechnologies}',
                     style: Theme.of(
                       context,
-                    ).textTheme.bodySmall?.copyWith(color: AppColors.textMuted),
+                    ).textTheme.bodySmall?.copyWith(color: palette.textMuted),
                   ),
                 ),
               Row(
@@ -106,7 +107,7 @@ class ProjectCard extends ConsumerWidget {
                     strings.moreInDetails,
                     style: Theme.of(
                       context,
-                    ).textTheme.bodySmall?.copyWith(color: AppColors.textMuted),
+                    ).textTheme.bodySmall?.copyWith(color: palette.textMuted),
                   ),
                 ),
             ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/app_theme.dart';
 import '../../domain/project.dart';
 import 'project_image.dart';
 
@@ -11,15 +12,17 @@ class ProjectCardHero extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final palette = context.palette;
+
     return Container(
       height: 180,
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(18),
-        gradient: const LinearGradient(
+        gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [AppColors.primarySoft, AppColors.surfaceMuted],
+          colors: [AppColors.primarySoft, palette.surfaceMuted],
         ),
       ),
       child: Stack(
@@ -31,7 +34,7 @@ class ProjectCardHero extends StatelessWidget {
             child: Container(
               width: 92,
               height: 92,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 color: AppColors.primarySoft,
                 shape: BoxShape.circle,
               ),
@@ -56,7 +59,7 @@ class ProjectCardHero extends StatelessWidget {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: AppColors.textPrimary,
+                    color: palette.textPrimary,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
