@@ -44,7 +44,7 @@ class ProjectsSection extends ConsumerWidget {
           ],
         ),
       ),
-      loading: () => const Center(child: CircularProgressIndicator()),
+      loading: () => const SizedBox.shrink(),
       error: (error, stackTrace) => Text(
         strings.errorLoadingProjects,
         style: Theme.of(context).textTheme.bodyLarge,

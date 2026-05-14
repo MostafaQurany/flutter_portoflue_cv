@@ -44,6 +44,8 @@ class AppStrings {
   String get adminSubtitle => locale.isRtl 
     ? 'هذه منطقة محصورة مجهزة للتكامل المستقبلي مع لوحة التحكم.'
     : 'This is a guarded entry point prepared for future backend integration.';
+  String get adminCredentialsHint =>
+      'Admin login requires PORTFOLIO_ADMIN_USERNAME and PORTFOLIO_ADMIN_PASSWORD dart-defines.';
   String get username => locale.isRtl ? 'اسم المستخدم' : 'Username';
   String get password => locale.isRtl ? 'كلمة المرور' : 'Password';
   String get enterAdminArea => locale.isRtl ? 'الدخول لمنطقة الإدارة' : 'Enter admin area';
@@ -61,6 +63,9 @@ class AppStrings {
   String get formValidated => locale.isRtl 
     ? 'تم التحقق من صحة النموذج. التخزين مؤجل للمرحلة المستقبلية.' 
     : 'Project form validated. Persistence is deferred to a future backend phase.';
+  String get invalidAdminCredentials => 'Invalid admin credentials.';
+  String get adminLoginUnavailable =>
+      'Admin login is unavailable until credentials are provided through dart-defines.';
   String get adminFormSubtitle => locale.isRtl
     ? 'نموذج إدارة للواجهة الأمامية فقط مع التحقق وحماية المسار.'
     : 'Frontend-only admin form with validation and route protection in place.';

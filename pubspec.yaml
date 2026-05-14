@@ -68,6 +68,7 @@ flutter:
   assets:
     - assets/data/
     - assets/images/
+    - assets/images/my_prand/
     - assets/images/logos/
     - assets/docs/
     - assets/images/dr_drug/

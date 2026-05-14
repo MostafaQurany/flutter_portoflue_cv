@@ -6,16 +6,21 @@ import '../../domain/project.dart';
 import 'project_image.dart';
 
 class ProjectCardHero extends StatelessWidget {
-  const ProjectCardHero({super.key, required this.project});
+  const ProjectCardHero({
+    super.key,
+    required this.project,
+    this.compact = false,
+  });
 
   final ProjectModel project;
+  final bool compact;
 
   @override
   Widget build(BuildContext context) {
     final palette = context.palette;
 
     return Container(
-      height: 180,
+      height: compact ? 152 : 180,
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(18),
@@ -29,11 +34,11 @@ class ProjectCardHero extends StatelessWidget {
         fit: StackFit.expand,
         children: [
           Positioned(
-            top: -18,
-            right: -18,
+            top: compact ? -12 : -18,
+            right: compact ? -12 : -18,
             child: Container(
-              width: 92,
-              height: 92,
+              width: compact ? 72 : 92,
+              height: compact ? 72 : 92,
               decoration: BoxDecoration(
                 color: AppColors.primarySoft,
                 shape: BoxShape.circle,
@@ -41,7 +46,7 @@ class ProjectCardHero extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(20),
+            padding: EdgeInsets.all(compact ? 16 : 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -53,7 +58,7 @@ class ProjectCardHero extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 12),
+                SizedBox(height: compact ? 8 : 12),
                 Text(
                   project.subtitle,
                   maxLines: 1,

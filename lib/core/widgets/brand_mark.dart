@@ -8,8 +8,8 @@ class BrandMark extends StatelessWidget {
 
   final bool compact;
 
-  static const _svgPath = 'assets/images/my_prand/gemini-svg (1).svg';
-  static const _pngPath = 'assets/images/my_prand/Code_Generated_Image (1).png';
+  static const _svgPath = 'assets/images/my_prand/gemini_svg.svg';
+  static const _pngPath = 'assets/images/my_prand/Code_Generated_Image.png';
 
   @override
   Widget build(BuildContext context) {

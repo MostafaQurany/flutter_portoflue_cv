@@ -109,14 +109,14 @@ class _TopNavigation extends ConsumerWidget {
                 ),
               ),
               const _ThemeToggle(),
-              _LanguageToggle(),
+              //_LanguageToggle(),
             ],
           )
         else
           Row(
             children: [
               const _ThemeToggle(compact: true),
-              _LanguageToggle(),
+             // _LanguageToggle(),
               Builder(
                 builder: (context) {
                   return IconButton(

@@ -15,10 +15,24 @@ class ProjectsGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (crossAxisCount == 1) {
+      return Column(
+        children: [
+          for (var index = 0; index < projects.length; index++) ...[
+            if (index > 0) const SizedBox(height: 18),
+            ProjectCard(
+              project: projects[index],
+              index: index,
+              crossAxisCount: crossAxisCount,
+            ),
+          ],
+        ],
+      );
+    }
+
     final aspectRatio = switch (crossAxisCount) {
-      1 => 0.72,
-      2 => 0.68,
-      _ => 0.66,
+      2 => 0.74,
+      _ => 0.72,
     };
 
     return GridView.builder(

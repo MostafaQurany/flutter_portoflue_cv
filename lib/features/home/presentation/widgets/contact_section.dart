@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../core/responsive/responsive_builder.dart';
 import '../../../../core/theme/app_theme.dart';
@@ -29,7 +31,7 @@ class ContactSection extends ConsumerWidget {
           child: _ContactLayout(isDesktop: true, content: content),
         ),
       ),
-      loading: () => const Center(child: CircularProgressIndicator()),
+      loading: () => const SizedBox.shrink(),
       error: (error, stackTrace) => const SizedBox.shrink(),
     );
   }
@@ -59,8 +61,7 @@ class _ContactLayout extends StatelessWidget {
           children: content.items
               .map(
                 (item) => _ContactChip(
-                  icon: _contactIcon(item.type),
-                  label: item.label,
+                  item: item,
                 ),
               )
               .toList(growable: false),
@@ -108,32 +109,116 @@ IconData _contactIcon(String type) {
 }
 
 class _ContactChip extends StatelessWidget {
-  const _ContactChip({required this.icon, required this.label});
+  const _ContactChip({required this.item});
 
-  final IconData icon;
-  final String label;
+  final ContactItem item;
 
   @override
   Widget build(BuildContext context) {
     final palette = context.palette;
+    final actionUri = _buildActionUri(item);
+    final canOpen = actionUri != null;
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
       decoration: BoxDecoration(
         color: palette.surface,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(color: palette.border),
       ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(icon, size: 18, color: Theme.of(context).colorScheme.primary),
-          const SizedBox(width: 10),
-          Text(label),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              _contactIcon(item.type),
+              size: 18,
+              color: Theme.of(context).colorScheme.primary,
+            ),
+            const SizedBox(width: 10),
+            ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 220),
+              child: SelectableText(
+                item.label,
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: palette.textPrimary,
+                ),
+              ),
+            ),
+            const SizedBox(width: 8),
+            Tooltip(
+              message: 'Copy',
+              child: IconButton(
+                visualDensity: VisualDensity.compact,
+                onPressed: () => _copyValue(context),
+                icon: const Icon(Icons.content_copy_rounded, size: 18),
+              ),
+            ),
+            if (canOpen)
+              Tooltip(
+                message: 'Open',
+                child: IconButton(
+                  visualDensity: VisualDensity.compact,
+                  onPressed: () => _openValue(context, actionUri),
+                  icon: const Icon(Icons.open_in_new_rounded, size: 18),
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }
+
+  Future<void> _copyValue(BuildContext context) async {
+    await Clipboard.setData(ClipboardData(text: item.label));
+    if (!context.mounted) {
+      return;
+    }
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Copied ${item.label}')),
+    );
+  }
+
+  Future<void> _openValue(BuildContext context, Uri? actionUri) async {
+    if (actionUri == null) {
+      return;
+    }
+
+    final didLaunch = await launchUrl(actionUri);
+    if (didLaunch || !context.mounted) {
+      return;
+    }
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Unable to open ${item.label}')),
+    );
+  }
+}
+
+Uri? _buildActionUri(ContactItem item) {
+  final value = item.label.trim();
+
+  return switch (item.type) {
+    'email' => Uri(
+        scheme: 'mailto',
+        path: value,
+      ),
+    'phone' => Uri(
+        scheme: 'tel',
+        path: value,
+      ),
+    'linkedin' || 'github' => Uri.tryParse(
+        value.startsWith('http') ? value : 'https://$value',
+      ),
+    'location' => Uri(
+        scheme: 'https',
+        host: 'www.google.com',
+        path: '/maps/search/',
+        queryParameters: {'api': '1', 'query': value},
+      ),
+    _ => null,
+  };
 }
 
 class _InfoCard extends StatelessWidget {

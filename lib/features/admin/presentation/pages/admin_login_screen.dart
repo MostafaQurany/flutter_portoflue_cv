@@ -35,7 +35,26 @@ class _AdminLoginScreenState extends ConsumerState<AdminLoginScreen> {
       return;
     }
 
-    ref.read(adminSessionProvider.notifier).signIn();
+    final strings = AppStrings.of(ref.read(localeProvider));
+    final session = ref.read(adminSessionProvider);
+    if (!session.isConfigured) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(strings.adminLoginUnavailable)),
+      );
+      return;
+    }
+
+    final didSignIn = ref.read(adminSessionProvider.notifier).signIn(
+          username: _usernameController.text,
+          password: _passwordController.text,
+        );
+    if (!didSignIn) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(strings.invalidAdminCredentials)),
+      );
+      return;
+    }
+
     context.go(RoutePaths.adminAddProject);
   }
 
@@ -94,6 +113,7 @@ class _AdminLoginCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final currentLocale = ref.watch(localeProvider);
     final strings = AppStrings.of(currentLocale);
+    final session = ref.watch(adminSessionProvider);
 
     return Card(
       child: Padding(
@@ -109,6 +129,18 @@ class _AdminLoginCard extends ConsumerWidget {
                 strings.adminSubtitle,
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
+              const SizedBox(height: 12),
+              Text(
+                strings.adminCredentialsHint,
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
+              if (!session.isConfigured) ...[
+                const SizedBox(height: 12),
+                Text(
+                  strings.adminLoginUnavailable,
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+              ],
               const SizedBox(height: 24),
               TextFormField(
                 controller: usernameController,
@@ -136,7 +168,7 @@ class _AdminLoginCard extends ConsumerWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: onSubmit,
+                  onPressed: session.isConfigured ? onSubmit : null,
                   child: Text(strings.enterAdminArea),
                 ),
               ),

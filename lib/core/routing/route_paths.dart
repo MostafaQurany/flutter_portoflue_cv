@@ -5,4 +5,6 @@ class RoutePaths {
   static const String projectDetails = '/project/:id';
   static const String adminLogin = '/admin/login';
   static const String adminAddProject = '/admin/add-project';
+
+  static String projectDetailsById(int id) => '/project/$id';
 }

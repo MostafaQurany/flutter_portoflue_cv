@@ -27,7 +27,7 @@ class AboutSectionWidget extends ConsumerWidget {
           child: _AboutLayout(isDesktop: true, content: content),
         ),
       ),
-      loading: () => const Center(child: CircularProgressIndicator()),
+      loading: () => const SizedBox.shrink(),
       error: (error, stackTrace) => const SizedBox.shrink(),
     );
   }
@@ -42,6 +42,7 @@ class _AboutLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final palette = context.palette;
+    final isCompact = MediaQuery.sizeOf(context).width <= 400;
 
     final services = Column(
       children: [
@@ -68,19 +69,19 @@ class _AboutLayout extends StatelessWidget {
         Text(
           content.aboutSummary,
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-            height: 1.8,
+            height: isCompact ? 1.65 : 1.8,
             color: palette.textMuted,
           ),
         ),
-        const SizedBox(height: 40),
-        _StatsGrid(stats: content.stats),
+        SizedBox(height: isCompact ? 28 : 40),
+        _StatsGrid(stats: content.stats, compact: isCompact),
       ],
     );
 
     if (!isDesktop) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [services, const SizedBox(height: 32), bio],
+        children: [services, SizedBox(height: isCompact ? 24 : 32), bio],
       );
     }
 
@@ -173,15 +174,16 @@ class _ServiceTile extends StatelessWidget {
 }
 
 class _StatsGrid extends StatelessWidget {
-  const _StatsGrid({required this.stats});
+  const _StatsGrid({required this.stats, required this.compact});
 
   final List<ProfileStat> stats;
+  final bool compact;
 
   @override
   Widget build(BuildContext context) {
     return Wrap(
-      spacing: 48,
-      runSpacing: 32,
+      spacing: compact ? 24 : 48,
+      runSpacing: compact ? 20 : 32,
       children: stats
           .map((stat) => _StatCard(value: stat.value, label: stat.label))
           .toList(growable: false),

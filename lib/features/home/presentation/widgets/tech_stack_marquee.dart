@@ -43,7 +43,7 @@ class TechStackMarquee extends ConsumerWidget {
               .toList(),
         ),
       ),
-      loading: () => const Center(child: CircularProgressIndicator()),
+      loading: () => const SizedBox.shrink(),
       error: (error, stackTrace) => const SizedBox.shrink(),
     );
   }

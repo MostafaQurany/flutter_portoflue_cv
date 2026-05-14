@@ -137,14 +137,14 @@ class _AddProjectContent extends ConsumerWidget {
     final header = isDesktop
         ? Row(
             children: [
-              Expanded(child: _HeaderBlock()),
+              const Expanded(child: _HeaderBlock()),
               TextButton(onPressed: onSignOut, child: Text(strings.signOut)),
             ],
           )
         : Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _HeaderBlock(),
+              const _HeaderBlock(),
               const SizedBox(height: 12),
               Align(
                 alignment: currentLocale == AppLocale.en ? Alignment.centerLeft : Alignment.centerRight,
@@ -229,6 +229,8 @@ class _AddProjectContent extends ConsumerWidget {
 }
 
 class _HeaderBlock extends ConsumerWidget {
+  const _HeaderBlock();
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final strings = AppStrings.of(ref.watch(localeProvider));

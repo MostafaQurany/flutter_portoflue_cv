@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../core/localization/app_locale.dart';
 import '../../../../core/localization/app_strings.dart';
 import '../../../../core/responsive/responsive_builder.dart';
+import '../../../../core/routing/route_paths.dart';
 import '../../../../core/design_system/molecules/project_info_card.dart';
 import '../../../../core/design_system/molecules/project_link_button.dart';
 import '../../../../core/theme/app_theme.dart';
@@ -37,7 +38,14 @@ class ProjectDetailsScreen extends ConsumerWidget {
             Icons.arrow_back_rounded,
             color: palette.textPrimary,
           ),
-          onPressed: () => context.pop(),
+          onPressed: () {
+            if (context.canPop()) {
+              context.pop();
+              return;
+            }
+
+            context.go(RoutePaths.home);
+          },
         ),
       ),
       body: projectsAsync.when(
