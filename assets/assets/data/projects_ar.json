@@ -1,5 +1,40 @@
 [
   {
+    "id": "koolyum",
+    "title": "Koolyum",
+    "subtitle": "الجسر الموحد لنقاط البيع وطلبات الذكاء الاصطناعي",
+    "cardDescription": "دراسة حالة Backend مخصصة تغطي الجسر متعدد المستأجرين لأنظمة POS، وتدفقات الطلبات، وتكامل عربات الذكاء الاصطناعي، وتجهيز المستأجرين، وبنية البحث الدلالي.",
+    "fullDescription": "افتح صفحة Koolyum المخصصة لاستعراض المنظومة، والخدمات الداخلية، والمخططات المصدرية التي توضح معمارية Universal POS Bridge.",
+    "technologies": [
+      "Python",
+      "FastAPI",
+      "MongoDB",
+      "Redis",
+      "WebSockets",
+      "Qdrant",
+      "Docker",
+      "Node.js",
+      "Express",
+      "Mongoose",
+      "Odoo",
+      "Traefik",
+      "Multi-tenant Architecture",
+      "POS Integration",
+      "API Design",
+      "Workflow/State Machine Design"
+    ],
+    "logo": "assets/images/logos/koolyum_logo.png",
+    "screenshots": [],
+    "detailsType": "external_server_ecosystem",
+    "detailsDataKey": "koolyum",
+    "isExternalServerData": true,
+    "links": {
+      "googlePlay": "",
+      "appStore": "",
+      "githubUrl": ""
+    }
+  },
+  {
     "title": "Cater Station",
     "subtitle": "منصة SaaS",
     "cardDescription": "منصة متعددة الأدوار للمناسبات والتموين مع سير عمل الحجز، ومعالجة المدفوعات، ولوحات تحكم مخصصة.",
