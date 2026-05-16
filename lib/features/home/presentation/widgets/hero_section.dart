@@ -13,10 +13,13 @@ import '../providers/portfolio_scroll_provider.dart';
 class HeroSection extends ConsumerWidget {
   const HeroSection({super.key});
 
+  static final Uri _resumeUri = Uri.parse(
+    'https://drive.google.com/file/d/12vhcLK7UiC5YUQNmFFE1iqo3cBDnqiUa/view?usp=sharing',
+  );
+
   Future<void> _launchResume() async {
-    final url = Uri.parse('assets/docs/resume.pdf');
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url);
+    if (await canLaunchUrl(_resumeUri)) {
+      await launchUrl(_resumeUri, webOnlyWindowName: '_blank');
     }
   }
 

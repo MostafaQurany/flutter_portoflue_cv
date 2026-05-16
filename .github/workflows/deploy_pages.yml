@@ -22,6 +22,9 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
+      - name: Generate launcher icons
+        run: dart run flutter_launcher_icons
+
       - name: Build Web
         run: flutter build web --base-href /flutter_portoflue_cv/ --release
 
