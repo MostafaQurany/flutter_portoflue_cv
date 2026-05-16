@@ -38,6 +38,15 @@ class AppStrings {
   String get projectLinks => locale.isRtl ? 'روابط المشروع' : 'Project links';
   String get appPreview => locale.isRtl ? 'معاينة التطبيق' : 'App Preview';
   String get unableToOpenLink => locale.isRtl ? 'تعذّر فتح الرابط.' : 'Unable to open project link.';
+  String get koolyumRepoPath => locale.isRtl ? 'مسار المستودع' : 'Repository path';
+  String get koolyumTechStack => locale.isRtl ? 'التقنيات' : 'Tech stack';
+  String get koolyumResponsibilities => locale.isRtl ? 'المسؤوليات' : 'Responsibilities';
+  String get koolyumKeyFeatures => locale.isRtl ? 'الميزات الأساسية' : 'Key features';
+  String get koolyumContracts => locale.isRtl ? 'العقود والمسارات' : 'Contracts and endpoints';
+  String get koolyumEvidence => locale.isRtl ? 'أدلة من الكود' : 'Source-backed evidence';
+  String get koolyumDetailFootnote => locale.isRtl
+      ? 'تستند المحتويات إلى مسح للملفات الأساسية في الخدمات الأربع مع استبعاد الاعتمادات والملفات المولدة.'
+      : 'This case study is derived from a careful first-party scan of the four services and excludes dependency/vendor noise.';
 
   // Admin
   String get adminLogin => locale.isRtl ? 'تسجيل دخول المدير' : 'Admin login';

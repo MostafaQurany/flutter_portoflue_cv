@@ -37,8 +37,9 @@ class _SafeAssetImageState extends State<SafeAssetImage> {
   void _fireErrorOnce() {
     if (!_errorFired) {
       _errorFired = true;
-      WidgetsBinding.instance
-          .addPostFrameCallback((_) => widget.onError?.call());
+      WidgetsBinding.instance.addPostFrameCallback(
+        (_) => widget.onError?.call(),
+      );
     }
   }
 
@@ -51,7 +52,7 @@ class _SafeAssetImageState extends State<SafeAssetImage> {
         placeholder: (context, url) => _buildShimmer(context),
         errorWidget: (context, url, error) {
           _fireErrorOnce();
-          return ImageFallback(label: widget.networkErrorLabel);
+          return Container(); //ImageFallback(label: widget.networkErrorLabel);
         },
         fadeInDuration: const Duration(milliseconds: 500),
         fadeOutDuration: const Duration(milliseconds: 300),
@@ -63,7 +64,7 @@ class _SafeAssetImageState extends State<SafeAssetImage> {
       fit: widget.fit,
       errorBuilder: (context, error, stackTrace) {
         _fireErrorOnce();
-        return ImageFallback(label: widget.assetErrorLabel);
+        return Container(); //ImageFallback(label: widget.assetErrorLabel);
       },
     );
   }

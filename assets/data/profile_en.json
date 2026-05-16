@@ -1,8 +1,8 @@
 {
   "greeting": "Hello",
   "name": "I'm Mostafa Qurany",
-  "role": "Senior Flutter Developer",
-  "summary": "Senior Flutter Developer with 4+ years of experience building scalable, production-grade mobile applications for Android and iOS. Specialized in Clean Architecture, modular systems, BLoC & Riverpod state management, offline-first solutions, POS integrations, and multi-role enterprise platforms.",
+  "role": "Flutter Developer",
+  "summary": "Flutter Developer with 4+ years of experience building scalable, production-grade mobile applications for Android and iOS. Specialized in Clean Architecture, modular systems, BLoC & Riverpod state management, offline-first solutions, POS integrations, and multi-role enterprise platforms.",
   "primaryCtaLabel": "Got a project?",
   "secondaryCtaLabel": "My resume",
   "stats": [
@@ -45,7 +45,8 @@
     "Freezed",
     "json_serializable",
     "Retrofit",
-    "Odoo"
+    "Odoo",
+    "Docker"
     
   ],
   "services": [
@@ -66,5 +67,5 @@
     }
   ],
   "aboutTitle": "About me",
-  "aboutSummary": "I am a Senior Flutter Developer from Beni Suef, Egypt, with a B.Sc. in Computer Science. I have a proven track record of leading full development lifecycles from requirements analysis to deployment. I specialize in building scalable POS systems, offline-first architectures, and enterprise solutions. I'm a quick learner who thrives on optimizing performance, delivering pixel-perfect UIs, and collaborating in agile teams."
+  "aboutSummary": "I am a Flutter Developer. I have a proven track record of leading full development lifecycles from requirements analysis to deployment. I specialize in building scalable POS systems, offline-first architectures, and enterprise solutions. I'm a quick learner who thrives on optimizing performance, delivering pixel-perfect UIs, and collaborating in agile teams."
 }

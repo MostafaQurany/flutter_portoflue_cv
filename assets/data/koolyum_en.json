@@ -1,0 +1,209 @@
+{
+  "title": "Koolyum",
+  "subtitle": "Backend Engineer — Universal POS Bridge & AI Online Ordering Workflow",
+  "summary": "Koolyum is a multi-service backend platform built for AI-assisted online ordering, tenant-aware POS integration, guest checkout, and operational order management. It brings several backend services together behind one cohesive experience so the ordering journey stays consistent even when restaurants run on different systems.",
+  "overviewTitle": "Ecosystem Overview",
+  "overviewSummary": "The platform is structured around one central ordering backend and three supporting services. Together, they handle catalog access, AI-assisted cart updates, workflow-driven order handling, tenant runtime setup, and smart search preparation. This lets the frontend and AI layer work with one clear experience while the backend handles provider-specific complexity in the background.",
+  "roleTitle": "What I Worked On",
+  "roleSummary": "My role focused on shaping the backend flows that connect ordering, checkout, workflow handling, and provider integration into one dependable system. I worked on the service contracts, order lifecycle behavior, AI-supported cart flow, and live update patterns that made the ecosystem usable from both the customer-facing side and the internal operations side.",
+  "servicesTitle": "Internal Services",
+  "servicesSummary": "Each service below represents a core part of the Koolyum ecosystem. The descriptions focus on product value, responsibilities, and the role each service plays in the overall ordering experience.",
+  "architectureTitle": "Architecture Notes",
+  "architectureNotes": [
+    "The public integration contract is tenant-scoped through X-API-Key and X-Tenant-Id instead of exposing raw provider credentials to clients.",
+    "The bridge separates direct provider order creation from the local MongoDB workflow resource so operational state stays under internal control.",
+    "Guest checkout carts are stored independently from orders_events and are identified by chatroom_id for AI and frontend reuse.",
+    "Redis is used for cache and synchronization behavior in the POS bridge, while MongoDB stores workflow and cart records.",
+    "The provisioning service is admin/internal-oriented and guarded by feature flags instead of acting as a public container creation API.",
+    "The custom Odoo layer enforces tenant/company scope on product and employee behavior and publishes product changes to the AI/embedding pipeline."
+  ],
+  "contributionTitle": "Contribution Highlights",
+  "contributionHighlights": [
+    "Designed or extended tenant-scoped API contracts and provider resolution flows across the bridge layer.",
+    "Worked on MongoDB-backed order workflow records with guarded state transitions, retry eligibility, and safe provider create rules.",
+    "Supported checkout cart APIs and AI sync behavior using chatroom_id plus full item payload persistence.",
+    "Connected WebSocket event flows so cart and workflow clients can receive live updates without repeated polling.",
+    "Integrated source-backed service behavior into a coherent backend story that spans ordering, provisioning, Odoo tenant scope, and vector search."
+  ],
+  "ecosystemFlowchartTitle": "How The Services Connect",
+  "ecosystemFlowchartTd": "flowchart TD\n    A[Frontend / AI Client] -->|X-API-Key + X-Tenant-Id| B[Universal POS Bridge]\n    B --> C[MongoDB checkout carts and workflows]\n    B --> D[Redis cache and sync state]\n    B --> E{Resolved POS Provider}\n    E --> F[Clover]\n    E --> G[Standard Odoo]\n    E --> H[Custom Odoo SaaS]\n    B --> I[Embedding Service]\n    I --> J[Qdrant Hybrid Search]\n    K[Tenant Provisioning Service] --> L[Tenant runtime metadata and routing]\n    H --> I\n    H --> B",
+  "services": [
+    {
+      "id": "universal-pos-bridge",
+      "title": "Universal POS Bridge",
+      "kind": "FastAPI integration service",
+      "repoPath": "E:\\C\\production projects\\ordering_products_service",
+      "shortDescription": "The core ordering backend that gives frontend and AI clients one consistent way to work with multiple POS providers, carts, workflows, and live updates.",
+      "fullDescription": "This service acts as the main bridge between the ordering experience and the systems running behind it. It unifies how menus, carts, orders, and workflow updates are handled, while keeping provider-specific logic hidden behind a single backend contract. It also supports the internal order lifecycle, making sure checkout and provider-side order creation follow a controlled and reliable flow.",
+      "responsibilities": [
+        "Resolve tenant POS configuration internally from X-Tenant-Id before talking to provider adapters.",
+        "Expose tenant-scoped APIs for items, categories, direct provider orders, checkout carts, order workflows, and sync status.",
+        "Persist checkout carts and orders_events workflow records in MongoDB.",
+        "Publish live workflow and cart events over WebSocket endpoints.",
+        "Coordinate background item-to-embedding synchronization with provider iteration and paced webhook delivery."
+      ],
+      "keyFeatures": [
+        "One unified ordering experience across Clover, standard Odoo, and custom Odoo tenants.",
+        "Guest checkout carts that support AI-assisted item selection and cart updates.",
+        "A controlled local workflow for moving orders through operational stages before provider-side creation.",
+        "Live updates for carts and order progress so the frontend can stay in sync without constant refreshes.",
+        "A clean separation between customer-facing ordering flows and provider-specific backend execution."
+      ],
+      "techStack": [
+        "Python",
+        "FastAPI",
+        "MongoDB",
+        "Redis",
+        "WebSockets",
+        "Docker"
+      ],
+      "contractsOrEndpoints": [
+        "GET /v1/items",
+        "POST /v1/orders",
+        "POST /v1/orders_events/",
+        "POST /v1/checkout_carts/ai-sync",
+        "GET /v1/orders_events/ws",
+        "GET /v1/checkout_carts/ws",
+        "POST /v1/sync",
+        "GET /v1/sync/status/all"
+      ],
+      "flowchartTitle": "Universal POS Bridge Flow",
+      "flowchartTd": "flowchart TD\n    A[Client] -->|X-API-Key + X-Tenant-Id| B[FastAPI Router]\n    B --> C[Tenant config dependency]\n    C --> D[Tenant management pos-config]\n    D --> E[Normalized TenantConfig]\n    E --> F{Route type}\n    F --> G[Items and categories]\n    F --> H[Checkout carts]\n    F --> I[orders_events workflow]\n    F --> J[Direct provider order]\n    H --> K[MongoDB checkout_carts]\n    I --> L[MongoDB orders_events]\n    I --> M[Workflow WebSocket publisher]\n    H --> N[Cart WebSocket publisher]\n    G --> O[Provider adapter]\n    J --> O\n    O --> P[Clover / Odoo / Odoo Custom]\n    B --> Q[Sync service]\n    Q --> R[Embedding webhook pipeline]",
+      "evidenceNotes": [
+        "src/main.py wires API, sync, Clover OAuth, and both WebSocket routers into the FastAPI app lifecycle.",
+        "src/interfaces/dependencies.py resolves tenant config by calling the internal pos-config endpoint before requests reach provider logic.",
+        "src/application/order_workflow_service.py contains guarded transitions and the rule that provider creation triggers on the first move into preparing.",
+        "src/application/checkout_cart_service.py stores guest carts by chatroom_id and supports AI sync plus full item payload persistence."
+      ]
+    },
+    {
+      "id": "embedding-service",
+      "title": "Embedding Service",
+      "kind": "FastAPI vector ingestion and search service",
+      "repoPath": "E:\\C\\production projects\\embedding_service",
+      "shortDescription": "The search preparation service that turns catalog content into richer, more discoverable data for AI and semantic retrieval use cases.",
+      "fullDescription": "This service supports the intelligence layer behind the ordering experience by preparing catalog and content data for search-oriented use cases. It receives normalized content from upstream services, processes it into searchable form, and helps make product information easier to retrieve in a more flexible and context-aware way.",
+      "responsibilities": [
+        "Accept add, edit, and delete webhook operations for provider-backed documents.",
+        "Normalize content by provider before processing.",
+        "Generate embeddings for chunks and upsert them into Qdrant collections.",
+        "Serve hybrid search over stored vectors with optional metadata filters."
+      ],
+      "keyFeatures": [
+        "Ingestion flows for adding, updating, and removing searchable content.",
+        "Support for content coming from more than one provider-side source.",
+        "Search behavior designed for more relevant and flexible retrieval.",
+        "Collection-aware organization that keeps tenant and content boundaries clear."
+      ],
+      "techStack": [
+        "Python",
+        "FastAPI",
+        "Qdrant",
+        "Vector Search",
+        "Docker"
+      ],
+      "contractsOrEndpoints": [
+        "POST /webhook/add_document",
+        "POST /webhook/edit_document",
+        "POST /webhook/delete_document",
+        "POST /webhook/search",
+        "GET /health"
+      ],
+      "flowchartTitle": "Embedding Pipeline Flow",
+      "flowchartTd": "flowchart TD\n    A[POS Bridge or Odoo webhook] --> B[Embedding API /webhook/*]\n    B --> C[Provider normalization]\n    C --> D[Parser and chunker]\n    D --> E[Embedding service]\n    E --> F[Dense vectors]\n    E --> G[Sparse vectors]\n    F --> H[Qdrant upsert]\n    G --> H\n    I[Search request] --> J[Hybrid search service]\n    J --> K[Qdrant query]\n    K --> L[Ranked chunks response]",
+      "evidenceNotes": [
+        "main.py mounts api/routes.py under the FastAPI app.",
+        "docs/API.md documents the webhook contracts and the hybrid search behavior.",
+        "services/vector_service.py drives chunk processing, embeddings, and Qdrant persistence.",
+        "vectordb/qdrant_db.py contains the hybrid dense+sparse search and storage behavior."
+      ]
+    },
+    {
+      "id": "tenant-provisioning-service",
+      "title": "Tenant Provisioning Service",
+      "kind": "Node.js admin/internal runtime provisioning service",
+      "repoPath": "E:\\C\\production projects\\docker_api_automate_create_container",
+      "shortDescription": "An internal operations service for preparing tenant environments and keeping deployment setup consistent across different runtime modes.",
+      "fullDescription": "This service supports the operational side of the platform by standardizing how tenant environments are prepared and managed. It helps the team create predictable tenant configurations, review deployment-ready setup before activation, and support different hosting models without turning infrastructure details into a manual process every time.",
+      "responsibilities": [
+        "Validate tenant provisioning input and generate deterministic tenant identifiers.",
+        "Return preview responses for container/runtime configuration without performing Docker actions.",
+        "Persist tenant metadata in MongoDB for shared or isolated runtime modes.",
+        "Provision isolated Docker containers only when the feature flag allows it."
+      ],
+      "keyFeatures": [
+        "A controlled internal flow for preparing tenant environments.",
+        "Preview-first behavior that supports review before live provisioning.",
+        "Support for both shared and isolated runtime strategies.",
+        "Consistent routing and deployment metadata generation.",
+        "Safer handling of environment conflicts and operational edge cases."
+      ],
+      "techStack": [
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Mongoose",
+        "Docker",
+        "Traefik"
+      ],
+      "contractsOrEndpoints": [
+        "POST /api/v1/tenants/provision-preview",
+        "POST /api/v1/tenants/provision",
+        "GET /api/v1/tenants",
+        "GET /api/v1/tenants/:tenantId",
+        "DELETE /api/v1/tenants/:tenantId",
+        "GET /health"
+      ],
+      "flowchartTitle": "Tenant Provisioning Flow",
+      "flowchartTd": "flowchart TD\n    A[Admin request] -->|X-Admin-Api-Key| B[Express tenant routes]\n    B --> C[Validate tenant input]\n    C --> D[Build tenant payload]\n    D --> E{Preview or provision}\n    E --> F[Preview response with env and labels]\n    E --> G[Provision path]\n    G --> H[Check feature flag]\n    H --> I[Check Mongo conflicts]\n    I --> J[Check Docker network and image]\n    J --> K[Create tenant record]\n    K --> L[Create and start container]\n    L --> M[Persist running tenant metadata]",
+      "evidenceNotes": [
+        "README.md clearly states preview-first behavior and that real provisioning is feature-flagged and admin/internal only.",
+        "src/modules/tenants/tenant.service.js contains deterministic payload generation, shared vs isolated logic, and real Docker provisioning steps.",
+        "src/middleware/adminAuth.js guards tenant routes through X-Admin-Api-Key.",
+        "src/modules/tenants/tenant.routes.js mounts preview, provision, list, get, and delete endpoints."
+      ]
+    },
+    {
+      "id": "custom-odoo-tenant-layer",
+      "title": "Custom Odoo Tenant Layer",
+      "kind": "Odoo addons for tenant scope, POS sync, and webhook publishing",
+      "repoPath": "E:\\C\\production projects\\AI-Call-Center\\odoo",
+      "shortDescription": "A customized Odoo layer that keeps tenant operations isolated, supports POS order handling, and feeds product changes into the wider Koolyum ecosystem.",
+      "fullDescription": "This service extends Odoo into a better fit for a multi-tenant ordering platform. It helps keep tenant data and day-to-day actions scoped correctly, supports the business flow around POS order handling, and plays an important role in keeping product changes connected to the rest of the platform through downstream sync behavior.",
+      "responsibilities": [
+        "Enforce company-scoped product and employee behavior for tenant users.",
+        "Expose focused JSON routes for POS order creation under API key protection.",
+        "Generate or persist tenant collection names at the company level for AI/vector sync.",
+        "Publish product create, update, and delete events to downstream webhooks."
+      ],
+      "keyFeatures": [
+        "Clear separation between tenant roles and company-scoped operations.",
+        "Safer product management behavior within each tenant space.",
+        "Dedicated support for POS order handling inside the custom Odoo layer.",
+        "Automatic product-change publishing to downstream platform services.",
+        "A stronger link between business data inside Odoo and the broader ordering ecosystem."
+      ],
+      "techStack": [
+        "Odoo",
+        "Python",
+        "POS Integration",
+        "Webhook Integration",
+        "Multi-tenant Architecture"
+      ],
+      "contractsOrEndpoints": [
+        "POST /api/automation/create_pos_order",
+        "POST /api/tenant/employee/create",
+        "X-API-Key protected Odoo JSON routes",
+        "Webhook calls to /webhook/add_document, /webhook/edit_document, /webhook/delete_document"
+      ],
+      "flowchartTitle": "Custom Odoo Tenant Flow",
+      "flowchartTd": "flowchart TD\n    A[Tenant owner or employee] --> B[Odoo tenant addons]\n    B --> C[Company-scoped access rules]\n    C --> D[Products and employees]\n    D --> E{Action type}\n    E --> F[POS order sync API]\n    E --> G[Product create or update]\n    E --> H[Product delete]\n    F --> I[POS order receipt response]\n    G --> J[Build AI payload]\n    H --> J\n    J --> K[Webhook endpoint]\n    K --> L[Embedding service and collection sync]",
+      "evidenceNotes": [
+        "POSTMAN_ROUTES.md documents the focused create_pos_order and employee creation flows with X-API-Key protection.",
+        "odoo_addons/pos_tenant/models/product_template.py enforces company-bound product operations for tenant users.",
+        "odoo_addons/pos_tenant/models/res_company.py stores tenant collection names and sync webhook settings at the company level.",
+        "odoo_addons/sync_with_webhooks/models/product_ai_sync.py publishes product lifecycle changes to downstream webhook endpoints."
+      ]
+    }
+  ]
+}

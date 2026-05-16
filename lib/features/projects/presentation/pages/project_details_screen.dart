@@ -10,6 +10,7 @@ import '../../../../core/design_system/molecules/project_info_card.dart';
 import '../../../../core/design_system/molecules/project_link_button.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../domain/project.dart';
+import '../../../koolyum/presentation/pages/koolyum_project_details_page.dart';
 import '../providers/projects_provider.dart';
 import '../widgets/project_details_header.dart';
 import '../widgets/project_overview_section.dart';
@@ -50,8 +51,15 @@ class ProjectDetailsScreen extends ConsumerWidget {
       ),
       body: projectsAsync.when(
         data: (projects) {
-          final index = int.tryParse(projectId);
-          if (index == null || index < 0 || index >= projects.length) {
+          ProjectModel? project;
+          for (final item in projects) {
+            if (item.id == projectId) {
+              project = item;
+              break;
+            }
+          }
+
+          if (project == null) {
             return Center(
               child: Text(
                 strings.projectNotFound,
@@ -60,7 +68,11 @@ class ProjectDetailsScreen extends ConsumerWidget {
             );
           }
 
-          return _ProjectDetailsLayout(project: projects[index]);
+          if (project.detailsType == ProjectDetailsType.externalServerEcosystem) {
+            return KoolyumProjectDetailsPage(project: project);
+          }
+
+          return _ProjectDetailsLayout(project: project);
         },
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (error, _) => Center(

@@ -30,7 +30,7 @@ class ProjectCard extends ConsumerWidget {
     final currentLocale = ref.watch(localeProvider);
     final strings = AppStrings.of(currentLocale);
     final palette = context.palette;
-    final detailsPath = RoutePaths.projectDetailsById(index);
+    final detailsPath = RoutePaths.projectDetailsById(project.id);
 
     return Card(
       clipBehavior: Clip.antiAlias,

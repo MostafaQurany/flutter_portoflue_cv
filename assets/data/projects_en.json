@@ -1,5 +1,39 @@
 [
- 
+  {
+    "id": "koolyum",
+    "title": "Koolyum",
+    "subtitle": "Universal POS Bridge & AI Ordering Backend",
+    "cardDescription": "A dedicated backend case study covering a multi-tenant POS bridge, workflow-driven ordering, AI cart integration, tenant provisioning, and vector-based search infrastructure.",
+    "fullDescription": "Open the dedicated Koolyum details experience to explore the ecosystem, its internal services, and the source-backed flowcharts behind the Universal POS Bridge architecture.",
+    "technologies": [
+      "Python",
+      "FastAPI",
+      "MongoDB",
+      "Redis",
+      "WebSockets",
+      "Qdrant",
+      "Docker",
+      "Node.js",
+      "Express",
+      "Mongoose",
+      "Odoo",
+      "Traefik",
+      "Multi-tenant Architecture",
+      "POS Integration",
+      "API Design",
+      "Workflow/State Machine Design"
+    ],
+    "logo": "assets/images/logos/koolyum_logo.png",
+    "screenshots": [],
+    "detailsType": "external_server_ecosystem",
+    "detailsDataKey": "koolyum",
+    "isExternalServerData": true,
+    "links": {
+      "googlePlay": "",
+      "appStore": "",
+      "githubUrl": ""
+    }
+  },
   {
     "title": "Barkin Al-Wafi",
     "subtitle": "Smart Parking Solution",
@@ -190,8 +224,7 @@
       "Geolocation"
     ],
     "logo": "assets/images/logos/taagira_logo.png",
-    "screenshots": [
-         ],
+    "screenshots": [],
     "links": {
       "googlePlay": "",
       "appStore": "",

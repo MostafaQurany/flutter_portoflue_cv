@@ -6,5 +6,5 @@ class RoutePaths {
   static const String adminLogin = '/admin/login';
   static const String adminAddProject = '/admin/add-project';
 
-  static String projectDetailsById(int id) => '/project/$id';
+  static String projectDetailsById(String id) => '/project/$id';
 }
