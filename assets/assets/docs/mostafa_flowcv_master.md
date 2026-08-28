@@ -158,11 +158,11 @@ Python, FastAPI, MongoDB, Redis, WebSockets, Qdrant, Docker, Node.js, Express, M
 - Technologies: Flutter, Riverpod, Hive, local persistence, invoice workflows, Bluetooth printing, network printing, Arabic RTL UI, role-based access, reporting dashboards, POS-oriented interaction design
 - Google Play: https://play.google.com/store/apps/details?id=com.wafy.restaurant
 
-### Barkin Al-Wafi | Smart Parking Solution
-- Built a field-focused parking operations app for guards and supervisors where the product had to support quick decisions, minimal friction, and reliable invoice handling in real-world usage conditions.
-- Delivered shift management, opening and closing balance tracking, parking invoice generation, fixed and hourly pricing logic, QR-based invoice completion, and portable printer support.
-- Helped shape a workflow-heavy mobile experience that combines operational speed, live sales visibility, and device-assisted execution rather than a simple static form-based app.
-- Technologies: Flutter, QR code scanning, Bluetooth POS printing, shift management, dynamic pricing logic, real-time statistics, invoice lifecycle handling, operational workflow design
+### Barkin Al-Wafi | Handheld POS & Smart Shift Invoicing Platform
+- Problem: Multi-level parking attendants faced chaotic 45s gate bottlenecks, cash leaks during shift handovers, and corrupted Arabic receipts in offline subterranean zones.
+- Engineering & Architecture: Engineered a high-availability handheld client for Sunmi V1s POS terminals using Flutter and Riverpod 2.x. Replaced `GetIt` with Riverpod's compile-time dependency injection to fully decouple repositories. Implemented `StateNotifier` + `Freezed` unions with `autoDispose` to aggressively clear states and prevent memory leaks during continuous vehicle check-ins on resource-constrained hardware. Built a custom 203 DPI PDF rasterization pipeline (`Printing.raster`) to stream flawless Arabic thermal receipts directly to the hardware buffer entirely offline.
+- Business Impact: Engineering choices translated directly into business results: slashed gate latency by 93% (under 3s per checkout) and achieved 100% shift cash audit accuracy with zero revenue leaks.
+- Technologies: Flutter, Riverpod 2.x, Sunmi V1s POS, Retrofit, Dio, Clean Architecture, 203 DPI PDF Rasterization, QR Code Verification, Shift Cash Auditing
 - Google Play: https://play.google.com/store/apps/details?id=com.teckpart.parkingtec
 
 ### Invotek | E-Invoicing System

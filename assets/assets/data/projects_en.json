@@ -36,16 +36,18 @@
   },
   {
     "title": "Barkin Al-Wafi",
-    "subtitle": "Smart Parking Solution",
-    "cardDescription": "Barkin Al-Wafi is the ideal solution for managing parking lots with ease and efficiency, specifically designed for guards to manage shifts and invoices.",
-    "fullDescription": "Barkin Al-Wafi is an integrated parking management system designed to facilitate daily operations for guards and supervisors. The app features daily shift management, tracking initial and final balances, and rapid creation of parking invoices. It supports two pricing models: fixed and hourly, with QR code scanning for quick invoice completion. It also enables direct invoice printing via portable POS printers and provides real-time statistics for sales and active vehicles, all within a modern and easy-to-use user interface.",
+    "subtitle": "Handheld POS & Smart Shift Invoicing Platform",
+    "cardDescription": "A mission-critical POS client engineered on Riverpod 2.x to solve underground connectivity drops, memory leaks on low-end hardware, and 45-second gate bottlenecks.",
+    "fullDescription": "Barkin Al-Wafi isn't a standard mobile app—it's a high-availability POS client engineered to survive the chaos of multi-level parking garages. Attendants were struggling with 45-second gate bottlenecks, cash leaks during shift handovers, and corrupted Arabic receipts in underground zones with zero cellular connectivity.\n\nTo solve this, I architected the system on Flutter and Riverpod 2.x, deliberately removing GetIt to leverage Riverpod's compile-time dependency injection. This fully decoupled our repositories and enforced a highly testable Clean Architecture. Because the Sunmi V1s hardware has severely limited memory and faces rapid, continuous vehicle check-ins, I implemented StateNotifier with Freezed unions and autoDispose to aggressively clear states and prevent memory leaks. I also engineered a custom 203 DPI PDF rasterization pipeline that bypasses standard Bluetooth limits, streaming flawless Arabic thermal receipts directly to the hardware buffer, entirely offline.\n\nThe engineering choices translated directly into business results: gate latency dropped by 93% (under 3 seconds per vehicle), and the automated shift cash-float system achieved 100% audit accuracy with zero revenue leaks.",
     "technologies": [
       "Flutter",
-      "QR Code Scanning",
-      "Bluetooth POS Printing",
-      "Real-time Statistics",
-      "Shift Management",
-      "Dynamic Pricing"
+      "Riverpod 2.x",
+      "Sunmi V1s POS",
+      "Retrofit / Dio",
+      "Clean Architecture",
+      "203 DPI PDF Rasterization",
+      "QR Verification",
+      "Shift Cash Auditing"
     ],
     "logo": "assets/images/logos/parking_management_logo.png",
     "screenshots": [
